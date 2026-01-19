@@ -1,0 +1,87 @@
+.minigames-section {
+    padding: var(--space-4xl) 0;
+}
+
+.minigames-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-2xl);
+}
+
+.minigame-card {
+    height: 300px;
+    perspective: 1000px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.minigame-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.minigame-card:hover .minigame-inner {
+    transform: rotateY(180deg);
+}
+
+.minigame-front,
+.minigame-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: var(--space-xl);
+}
+
+.minigame-front {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.minigame-back {
+    background-color: var(--primary-purple);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.mg-icon {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-l);
+}
+
+.mg-type {
+    margin-top: var(--space-l);
+    padding: 4px 12px;
+    border: 1px solid;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.minigame-back p {
+    margin-bottom: var(--space-xl);
+    font-size: 0.9rem;
+}
+
+.btn-play {
+    background: white;
+    color: black;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}

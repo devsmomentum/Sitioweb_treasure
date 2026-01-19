@@ -1,0 +1,84 @@
+.shop-section {
+    padding: var(--space-4xl) 0;
+    background: linear-gradient(to bottom, transparent, rgba(255, 215, 0, 0.03));
+}
+
+.shop-header {
+    text-align: center;
+    margin-bottom: var(--space-4xl);
+}
+
+.shop-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--space-3xl);
+}
+
+.npc-container {
+    padding: var(--space-3xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-color: rgba(255, 215, 0, 0.2);
+}
+
+.npc-avatar {
+    font-size: 5rem;
+    margin-bottom: var(--space-xl);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+}
+
+.npc-speech {
+    font-style: italic;
+    color: var(--gold-accent);
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+}
+
+.shop-item {
+    display: flex;
+    align-items: center;
+    padding: var(--space-xl);
+    gap: var(--space-l);
+    border-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.shop-item:hover {
+    background: rgba(255, 215, 0, 0.05);
+    border-color: var(--gold-accent);
+    transform: scale(1.02);
+}
+
+.item-icon {
+    font-size: 2.5rem;
+}
+
+.item-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.item-info p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.item-price {
+    margin-left: auto;
+    font-weight: 700;
+    color: var(--gold-accent);
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+}

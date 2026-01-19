@@ -1,0 +1,108 @@
+.interactive-section {
+    padding: var(--space-4xl) 0;
+    background: radial-gradient(circle at 10% 20%, rgba(108, 92, 231, 0.05) 0%, transparent 50%);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+}
+
+.interactive-text h2 {
+    font-size: 3rem;
+    margin-bottom: var(--space-xl);
+}
+
+.status-indicator {
+    margin-top: var(--space-2xl);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.status-indicator span {
+    transition: all 0.3s ease;
+}
+
+.cold {
+    color: #5CC7E7;
+    text-shadow: 0 0 10px rgba(92, 199, 231, 0.5);
+}
+
+.warm {
+    color: #FFB142;
+    text-shadow: 0 0 10px rgba(255, 177, 66, 0.5);
+}
+
+.hot {
+    color: #FF6B9D;
+    text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+}
+
+.burning {
+    color: #FF4757;
+    text-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
+}
+
+.interactive-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.scanner-mockup {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% !important;
+    overflow: hidden;
+}
+
+.scanner-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--primary-purple) 0%, transparent 70%);
+    z-index: 1;
+    transition: all 0.1s linear;
+}
+
+.scanner-center {
+    position: relative;
+    z-index: 2;
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+}
+
+.pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border: 2px solid var(--primary-purple);
+    border-radius: 50%;
+    animation: pulse-glow 2s infinite;
+}
+
+.scanner-label {
+    position: relative;
+    z-index: 2;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}

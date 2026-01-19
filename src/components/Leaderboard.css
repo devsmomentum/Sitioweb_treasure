@@ -1,0 +1,99 @@
+.leaderboard-section {
+    padding: var(--space-4xl) 0;
+    background: radial-gradient(circle at 90% 80%, rgba(255, 107, 157, 0.05) 0%, transparent 50%);
+}
+
+.leaderboard-container {
+    overflow: hidden;
+    border-color: rgba(108, 92, 231, 0.2);
+}
+
+.leaderboard-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 150px 100px 150px;
+    padding: var(--space-l) var(--space-2xl);
+    background: rgba(108, 92, 231, 0.1);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 150px 100px 150px;
+    padding: var(--space-l) var(--space-2xl);
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+.leaderboard-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.player-rank {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold-accent);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+}
+
+.player-avatar {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.player-name {
+    font-weight: 600;
+}
+
+.player-class {
+    font-size: 0.9rem;
+    color: var(--secondary-pink);
+}
+
+.player-level {
+    font-weight: 700;
+    color: var(--gold-accent);
+}
+
+.player-xp {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.top-1 {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), transparent);
+}
+
+.top-2 {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.05), transparent);
+}
+
+.top-3 {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.05), transparent);
+}
+
+@media (max-width: 768px) {
+    .leaderboard-header {
+        grid-template-columns: 50px 1fr 100px;
+    }
+
+    .leaderboard-row {
+        grid-template-columns: 50px 1fr 100px;
+        padding: var(--space-m);
+    }
+
+    .player-class,
+    .hide-mobile {
+        display: none;
+    }
+}
