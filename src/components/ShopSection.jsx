@@ -2,10 +2,10 @@ import React from 'react';
 import './ShopSection.css';
 
 const powerUps = [
-    { name: 'Freeze Crystal', desc: 'Stop your rivals in their tracks.', icon: '❄️' },
-    { name: 'Golden Shield', desc: 'Protect your progress from attacks.', icon: '🛡️' },
-    { name: 'Time Warp', desc: 'Earn extra time for difficult clues.', icon: '⏱️' },
-    { name: 'X-Ray Vision', desc: 'See where the hidden items are.', icon: '💡' }
+    { name: 'Cristal Curativo', desc: 'Detén a tus rivales en seco.', icon: '❄️' },
+    { name: 'Escudo Dorado', desc: 'Protege tu progreso de los ataques.', icon: '🛡️' },
+    { name: 'Salto Temporal', desc: 'Gana tiempo extra para pistas difíciles.', icon: '⏱️' },
+    { name: 'Visión Rayos-X', desc: 'Mira dónde están los objetos ocultos.', icon: '💡' }
 ];
 
 const ShopSection = () => {
@@ -14,14 +14,14 @@ const ShopSection = () => {
             <div className="container">
                 <div className="shop-header">
                     <h2 className="section-title">La Tiendita</h2>
-                    <p>Equip yourself with powerful items to dominate the hunt.</p>
+                    <p>Equípate con objetos poderosos para dominar la búsqueda.</p>
                 </div>
 
                 <div className="shop-layout">
                     <div className="npc-container glass">
                         <div className="npc-avatar">🧙‍♂️</div>
                         <div className="npc-speech">
-                            "Choose wisely, traveler. These relics will determine your fate."
+                            "Elige sabiamente, viajero. Estas reliquias determinarán tu destino."
                         </div>
                     </div>
 

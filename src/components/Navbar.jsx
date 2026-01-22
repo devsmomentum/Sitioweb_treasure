@@ -19,10 +19,10 @@ const Navbar = () => {
           TREASURE<span>HUNT</span>
         </div>
         <div className="nav-links">
-          <a href="#about">The Game</a>
-          <a href="#features">Features</a>
-          <a href="#shop">Shop</a>
-          <a href="#contact" className="btn-nav">Download Now</a>
+          <a href="#about">Información</a>
+          <a href="#features">Características</a>
+          <a href="#shop">Tienda</a>
+          <a href="#contact" className="btn-nav">Descargar Ahora</a>
         </div>
       </div>
     </nav>

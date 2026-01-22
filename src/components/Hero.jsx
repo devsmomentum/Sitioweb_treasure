@@ -29,32 +29,32 @@ const Hero = () => {
 
     return (
         <section className="hero-rockstar-wide" ref={containerRef}>
-            {/* Layer 1: Stars/Far BG */}
+            {/* Capa 1: Fondo de estrellas/nebulosa */}
             <motion.div
                 className="parallax-layer l1-far-bg"
                 style={{ y: bgY, scale: bgScale, backgroundImage: `url('/hero-bg.png')` }}
             />
 
-            {/* Layer 2: Midground Silhouettes */}
+            {/* Capa 2: Siluetas de ruinas */}
             <motion.div
                 className="parallax-layer l2-midground"
                 style={{ y: midY, x: midX, backgroundImage: `url('/midground.png')` }}
             />
 
-            {/* Layer 3: Main Character */}
+            {/* Capa 3: Personaje principal */}
             <motion.div
                 className="parallax-layer l3-character"
                 style={{ y: charY, scale: charScale }}
             >
-                <img src="/character.png" alt="Hunter" />
+                <img src="/character.png" alt="Cazador" />
             </motion.div>
 
-            {/* Layer 4: Floating Foreground Items */}
+            {/* Capa 4: Elementos flotantes de primer plano */}
             <motion.div
                 className="parallax-layer l4-foreground-left"
                 style={{ y: fgY, x: fgX }}
             >
-                <img src="/foreground-item.png" alt="Crystal" />
+                <img src="/foreground-item.png" alt="Objeto" />
             </motion.div>
 
             <motion.div
@@ -64,13 +64,13 @@ const Hero = () => {
                     x: useTransform(smoothScroll, [0, 1], ["0%", "15%"])
                 }}
             >
-                <img src="/foreground-item.png" alt="Crystal" />
+                <img src="/foreground-item.png" alt="Objeto" />
             </motion.div>
 
-            {/* Overlays */}
+            {/* Superposiciones */}
             <div className="wide-vignette"></div>
 
-            {/* Layer 5: Text Content */}
+            {/* Capa 5: Contenido de texto */}
             <motion.div
                 className="hero-content-wide"
                 style={{ y: textY, opacity: textOpacity }}
@@ -83,17 +83,17 @@ const Hero = () => {
                     >
                         Treasure Hunt
                     </motion.h1>
-                    <span className="wide-tagline">THE NEXT ERA OF MOBILE RPG</span>
+                    <span className="wide-tagline">LA NUEVA ERA DEL RPG MÓVIL</span>
                 </div>
 
                 <div className="hero-cta-group">
-                    <button className="btn-rockstar-wide primary">Watch Trailer</button>
-                    <button className="btn-rockstar-wide secondary">Explore World</button>
+                    <button className="btn-rockstar-wide primary">Ver Tráiler</button>
+                    <button className="btn-rockstar-wide secondary">Explorar Mundo</button>
                 </div>
             </motion.div>
 
             <div className="scroll-hint">
-                <span>SCROLL TO EXPLORE</span>
+                <span>DESLIZA PARA EXPLORAR</span>
                 <div className="scroll-line"></div>
             </div>
         </section>
