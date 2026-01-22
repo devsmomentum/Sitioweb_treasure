@@ -1,13 +1,12 @@
-.hero-rockstar-wide {
+.hero-rockstar-urban {
     position: relative;
     height: 150vh;
-    /* Increased height for longer scroll effect */
     width: 100%;
     overflow: hidden;
     background: #000;
 }
 
-.parallax-layer {
+.parallax-layer-urban {
     position: absolute;
     inset: 0;
     background-size: cover;
@@ -15,71 +14,72 @@
     will-change: transform;
 }
 
-/* Layer 1: Stars/Sky */
-.l1-far-bg {
+/* Layer 1: Stars/Sky/City */
+.l1-city-bg {
     z-index: 1;
-    inset: -15%;
-}
-
-/* Layer 2: Midground Ruins */
-.l2-midground {
-    z-index: 5;
     inset: -10%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    opacity: 0.9;
 }
 
-/* Layer 3: Character */
-.l3-character {
+/* Layer 2: Character */
+.l2-character-urban {
     z-index: 10;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    padding-right: 5%;
-    padding-bottom: -10%;
+    padding-right: 10%;
+    bottom: -5%;
 }
 
-.l3-character img {
-    height: 110%;
+.l2-character-urban img {
+    height: 100%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0 0 40px rgba(0, 0, 0, 1));
+    transform-origin: bottom right;
 }
 
-/* Layer 4: Foreground Items */
-.l4-foreground-left {
+/* Layer 3: Foreground Items */
+.l3-item-left {
     z-index: 25;
-    left: 10%;
-    top: 60%;
+    left: 15%;
+    top: 65%;
+    width: 200px;
+    mix-blend-mode: screen;
+}
+
+.l3-item-right {
+    z-index: 25;
+    right: 15%;
+    top: 35%;
     width: 300px;
     mix-blend-mode: screen;
 }
 
-.l4-foreground-right {
-    z-index: 25;
-    right: 5%;
-    top: 40%;
-    width: 400px;
-    mix-blend-mode: screen;
-}
-
-.l4-foreground-left img,
-.l4-foreground-right img {
+.l3-item-left img,
+.l3-item-right img {
     width: 100%;
-    filter: blur(2px) brightness(1.2);
+    filter: blur(2px) brightness(1.5) drop-shadow(0 0 20px #a29bfe);
 }
 
-.wide-vignette {
+.urban-vignette {
     position: absolute;
     inset: 0;
     z-index: 20;
-    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.9) 100%);
+    background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.9) 100%);
     pointer-events: none;
 }
 
-.hero-content-wide {
+.urban-glow-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+    z-index: 22;
+}
+
+.hero-content-urban {
     position: sticky;
     top: 0;
     height: 100vh;
@@ -91,109 +91,121 @@
     color: white;
     text-align: center;
     pointer-events: none;
+    padding: 0 40px;
 }
 
-.logo-lockup h1 {
-    font-size: clamp(4rem, 15vw, 10rem);
-    font-weight: 900;
-    letter-spacing: -4px;
-    line-height: 0.8;
+.logo-lockup-urban h1 {
+    font-size: clamp(4rem, 18vw, 12rem);
+    font-weight: 950;
+    letter-spacing: -6px;
+    line-height: 0.75;
     margin: 0;
     text-transform: uppercase;
+    text-shadow: 0 0 50px rgba(0, 0, 0, 1);
+    color: #fff;
 }
 
-.wide-tagline {
+.urban-tagline {
     display: block;
-    font-size: 1.2rem;
-    letter-spacing: 12px;
+    font-size: 1.1rem;
+    letter-spacing: 10px;
     font-weight: 900;
-    margin-top: 20px;
+    margin-top: 30px;
     color: #a29bfe;
-    text-shadow: 0 0 20px rgba(108, 92, 231, 0.5);
+    text-shadow: 0 0 20px rgba(108, 92, 231, 0.6);
 }
 
 .hero-cta-group {
-    margin-top: 60px;
+    margin-top: 50px;
     display: flex;
     gap: 30px;
     pointer-events: auto;
 }
 
-.btn-rockstar-wide {
-    padding: 20px 50px;
-    font-size: 1rem;
+.btn-urban {
+    padding: 22px 55px;
+    font-size: 0.95rem;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.btn-rockstar-wide.primary {
+.btn-urban.primary {
     background: white;
     color: black;
 }
 
-.btn-rockstar-wide.secondary {
-    background: rgba(0, 0, 0, 0.6);
+.btn-urban.secondary {
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     border: 3px solid white;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
 }
 
-.btn-rockstar-wide:hover {
-    transform: scale(1.1);
+.btn-urban:hover {
+    transform: translateY(-5px) scale(1.05);
     background: #6c5ce7;
     color: white;
+    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.4);
 }
 
-.scroll-hint {
+.scroll-hint-urban {
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 40;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    opacity: 0.6;
+    gap: 20px;
+    opacity: 0.7;
 }
 
-.scroll-hint span {
-    font-size: 0.8rem;
-    letter-spacing: 4px;
-    font-weight: 700;
+.scroll-hint-urban span {
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    font-weight: 800;
 }
 
-.scroll-line {
+.scroll-bar {
     width: 2px;
-    height: 60px;
-    background: linear-gradient(to bottom, white, transparent);
+    height: 50px;
+    background: linear-gradient(to bottom, #a29bfe, transparent);
 }
 
 @media (max-width: 1024px) {
-    .l3-character {
+    .l2-character-urban {
         opacity: 0.5;
         padding-right: 0;
+        right: -10%;
+    }
+
+    .logo-lockup-urban h1 {
+        font-size: 15vw;
     }
 }
 
 @media (max-width: 768px) {
-
-    .l2-midground,
-    .l4-foreground-left,
-    .l4-foreground-right {
+    .parallax-layer-urban:not(.l1-city-bg) {
         display: none;
     }
 
-    .hero-rockstar-wide {
+    .hero-rockstar-urban {
         height: 100vh;
     }
 
     .hero-cta-group {
         flex-direction: column;
-        width: 80%;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .btn-urban {
+        width: 100%;
+        padding: 18px 0;
     }
 }
