@@ -5,6 +5,7 @@ import InteractiveSection from './components/InteractiveSection';
 import Minigames from './components/Minigames';
 import Leaderboard from './components/Leaderboard';
 import ShopSection from './components/ShopSection';
+import ActionHero from './components/ActionHero';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <ActionHero />
         <Features />
         <InteractiveSection />
         <Minigames />

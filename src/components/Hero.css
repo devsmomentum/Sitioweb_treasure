@@ -14,58 +14,21 @@
     will-change: transform;
 }
 
-/* Layer 1: Stars/Sky/City */
 .l1-city-bg {
     z-index: 1;
-    inset: -10%;
-}
-
-/* Layer 2: Character */
-.l2-character-urban {
-    z-index: 10;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding-right: 10%;
-    bottom: -5%;
-}
-
-.l2-character-urban img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(0, 0, 0, 1));
-    transform-origin: bottom right;
-}
-
-/* Layer 3: Foreground Items */
-.l3-item-left {
-    z-index: 25;
-    left: 15%;
-    top: 65%;
-    width: 200px;
-    mix-blend-mode: screen;
-}
-
-.l3-item-right {
-    z-index: 25;
-    right: 15%;
-    top: 35%;
-    width: 300px;
-    mix-blend-mode: screen;
-}
-
-.l3-item-left img,
-.l3-item-right img {
-    width: 100%;
-    filter: blur(2px) brightness(1.5) drop-shadow(0 0 20px #a29bfe);
+    inset: -15% -10%;
+    /* More aggressive horizontal inset */
+    background-size: cover;
 }
 
 .urban-vignette {
     position: absolute;
     inset: 0;
     z-index: 20;
-    background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.9) 100%);
+    background: radial-gradient(circle at 50% 50%,
+            rgba(108, 92, 231, 0.1) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.9) 100%);
     pointer-events: none;
 }
 
@@ -95,10 +58,11 @@
 }
 
 .logo-lockup-urban h1 {
-    font-size: clamp(4rem, 18vw, 12rem);
+    font-size: clamp(3rem, 12vw, 8rem);
+    /* Reduced size */
     font-weight: 950;
-    letter-spacing: -6px;
-    line-height: 0.75;
+    letter-spacing: -4px;
+    line-height: 0.85;
     margin: 0;
     text-transform: uppercase;
     text-shadow: 0 0 50px rgba(0, 0, 0, 1);
@@ -115,7 +79,7 @@
     text-shadow: 0 0 20px rgba(108, 92, 231, 0.6);
 }
 
-.hero-cta-group {
+.hero-actions-urban {
     margin-top: 50px;
     display: flex;
     gap: 30px;
@@ -178,27 +142,17 @@
 }
 
 @media (max-width: 1024px) {
-    .l2-character-urban {
-        opacity: 0.5;
-        padding-right: 0;
-        right: -10%;
-    }
-
     .logo-lockup-urban h1 {
         font-size: 15vw;
     }
 }
 
 @media (max-width: 768px) {
-    .parallax-layer-urban:not(.l1-city-bg) {
-        display: none;
-    }
-
     .hero-rockstar-urban {
         height: 100vh;
     }
 
-    .hero-cta-group {
+    .hero-actions-urban {
         flex-direction: column;
         width: 100%;
         gap: 15px;
