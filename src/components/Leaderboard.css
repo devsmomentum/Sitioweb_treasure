@@ -35,10 +35,23 @@
 }
 
 .leaderboard-container {
-    overflow: hidden;
+    overflow-x: auto;
     border-color: rgba(255, 255, 255, 0.1);
     background: rgba(20, 20, 30, 0.4);
     backdrop-filter: blur(20px);
+}
+
+.leaderboard-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.leaderboard-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.leaderboard-container::-webkit-scrollbar-thumb {
+    background: rgba(162, 155, 254, 0.2);
+    border-radius: 10px;
 }
 
 .leaderboard-header {

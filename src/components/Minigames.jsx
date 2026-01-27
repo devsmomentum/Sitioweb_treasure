@@ -22,7 +22,7 @@ const Minigames = () => {
                                     <h4>{m.name}</h4>
                                     <span className="mg-type" style={{ borderColor: m.color, color: m.color }}>{m.type}</span>
                                 </div>
-                                <div className="minigame-back" style={{ backgroundColor: m.color }}>
+                                <div className="minigame-back">
                                     <p>Domina este desafío para ganar recompensas especiales y XP.</p>
                                     <button className="btn-play">Ver Demo</button>
                                 </div>

@@ -104,5 +104,19 @@
     .grid-2 {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: var(--space-3xl);
+    }
+
+    .interactive-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .scanner-mockup {
+        width: 260px;
+        height: 260px;
+    }
+
+    .scanner-center {
+        font-size: 2rem;
     }
 }

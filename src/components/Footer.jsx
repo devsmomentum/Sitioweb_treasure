@@ -1,4 +1,4 @@
-import React from 'react';
+import { Instagram, Youtube, MessageCircle } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -6,8 +6,8 @@ const Footer = () => {
         <footer className="footer">
             <div className="container">
                 <div className="footer-content">
-                    <div className="footer-logo">
-                        TREASURE<span>HUNT</span>
+                    <div className="footer-logo" data-text="MapHunter">
+                        MapHunter
                     </div>
                     <div className="footer-links">
                         <div className="link-group">
@@ -30,11 +30,11 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; 2026 Treasure Hunt RPG. Todos los derechos reservados.</p>
+                    <p>&copy; 2026 MapHunter. Todos los derechos reservados.</p>
                     <div className="social-links">
-                        <a href="#">TW</a>
-                        <a href="#">IG</a>
-                        <a href="#">YT</a>
+                        <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
+                        <a href="#" aria-label="YouTube"><Youtube size={20} /></a>
+                        <a href="#" aria-label="WhatsApp" className="whatsapp"><MessageCircle size={20} /></a>
                     </div>
                 </div>
             </div>

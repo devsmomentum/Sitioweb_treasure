@@ -1,0 +1,203 @@
+.plans-section {
+    padding: 100px 0;
+    position: relative;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0a0e27 100%);
+}
+
+.plans-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.plans-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.plans-header h2 span {
+    background: linear-gradient(135deg, #a29bfe 0%, #ff7675 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(162, 155, 254, 0.3));
+}
+
+.plans-header p {
+    color: #b0bdc9;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Matrix Container */
+.matrix-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.matrix-wrapper {
+    overflow-x: auto;
+    /* For mobile responsiveness */
+}
+
+/* Table Stylings */
+.benefit-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.benefit-matrix th,
+.benefit-matrix td {
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.benefit-matrix thead th {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.level-header {
+    text-align: center;
+    min-width: 150px;
+}
+
+.level-label {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.level-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Row Hover */
+.benefit-matrix tbody tr {
+    transition: background 0.3s ease;
+}
+
+.benefit-matrix tbody tr:hover {
+    background: rgba(162, 155, 254, 0.05);
+}
+
+.benefit-name {
+    font-weight: 500;
+    color: #d1d5db;
+    width: 40%;
+}
+
+.benefit-status {
+    text-align: center;
+}
+
+.icon-check {
+    color: #00D9A3;
+    filter: drop-shadow(0 0 8px rgba(0, 217, 163, 0.6));
+    margin: 0 auto;
+}
+
+.empty-status {
+    opacity: 0.2;
+    color: #fff;
+    font-weight: 300;
+}
+
+/* Column Highlighting */
+.level-1 {
+    border-left: 1px solid rgba(162, 155, 254, 0.1);
+}
+
+.level-3 {
+    border-right: 1px solid rgba(255, 118, 117, 0.1);
+}
+
+/* Matrix Actions */
+.matrix-actions {
+    display: flex;
+    justify-content: center;
+}
+
+/* Scrollbar for mobile */
+.matrix-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.matrix-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.matrix-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(162, 155, 254, 0.2);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .plans-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .plans-header p {
+        font-size: 1rem;
+    }
+
+    .benefit-matrix th,
+    .benefit-matrix td {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+    }
+
+    .benefit-name {
+        min-width: 160px;
+    }
+
+    .level-header {
+        min-width: 100px;
+    }
+
+    .level-label {
+        font-size: 0.8rem;
+    }
+
+    .level-subtitle {
+        font-size: 0.8rem;
+    }
+}
+
+/* Scroll hint for matrix on mobile */
+@media (max-width: 900px) {
+    .matrix-wrapper::after {
+        content: '← Desliza para ver más →';
+        display: block;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}

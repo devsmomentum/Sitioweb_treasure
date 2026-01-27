@@ -4,6 +4,7 @@ import './Hero.css';
 
 const Hero = () => {
     const containerRef = useRef(null);
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
@@ -13,10 +14,17 @@ const Hero = () => {
 
     // SIMPLE URBAN PARALLAX SYSTEM
     const bgY = useTransform(smoothScroll, [0, 1], ["0%", "20%"]);
-    const bgScale = useTransform(smoothScroll, [0, 1], [1.1, 1.3]);
+    const bgScale = useTransform(smoothScroll, [0, 1], [1.0, 1.15]);
 
     const textY = useTransform(smoothScroll, [0, 1], ["0%", "-80%"]);
     const textOpacity = useTransform(smoothScroll, [0, 0.4], [1, 0]);
+
+    const scrollToTrailer = () => {
+        const trailerSection = document.getElementById('trailer');
+        if (trailerSection) {
+            trailerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 
     return (
         <section className="hero-rockstar-urban" ref={containerRef}>
@@ -37,14 +45,20 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
+                        data-text="MapHunter"
                     >
-                        Treasure Hunt
+                        MapHunter
                     </motion.h1>
                     <span className="urban-tagline">LA BÚSQUEDA DEL TESORO EN TU CIUDAD</span>
                 </div>
 
                 <div className="hero-actions-urban">
-                    <button className="btn-urban primary">Ver Tráiler</button>
+                    <button
+                        className="btn-urban primary"
+                        onClick={scrollToTrailer}
+                    >
+                        Ver Tráiler
+                    </button>
                     <button className="btn-urban secondary">Empezar Búsqueda</button>
                 </div>
             </motion.div>

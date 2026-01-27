@@ -13,11 +13,15 @@
 
 .action-parallax-bg {
     position: absolute;
-    inset: -20% -10%;
-    background-size: cover;
-    background-position: center;
+    inset: -10% -5%;
     z-index: 1;
-    filter: brightness(0.6) contrast(1.1);
+    filter: brightness(0.8) contrast(1.1);
+}
+
+.action-bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .action-vignette {
@@ -56,11 +60,12 @@
     letter-spacing: -2px;
     text-transform: uppercase;
     line-height: 0.95;
-    background: linear-gradient(180deg, #FFFFFF 10%, #a29bfe 100%);
+    background: linear-gradient(180deg, #FFFFFF 10%, #ff00c1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
+    text-shadow: 0 0 20px rgba(255, 0, 193, 0.3);
 }
 
 .action-description {
@@ -138,9 +143,28 @@
         height: 100vh;
     }
 
+    .action-content {
+        text-align: center;
+        align-items: center;
+        padding: 0 30px;
+    }
+
+    .action-title {
+        font-size: 3.5rem;
+    }
+
+    .action-description {
+        font-size: 1.1rem;
+    }
+
     .action-cta {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        width: 100%;
         gap: 20px;
+    }
+
+    .btn-action {
+        width: 100%;
     }
 }

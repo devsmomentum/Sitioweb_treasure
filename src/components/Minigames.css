@@ -40,8 +40,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
-    padding: var(--space-xl);
+    border-radius: 40px;
+    /* More rounded like the image */
+    padding: var(--space-2xl);
 }
 
 .minigame-front {
@@ -51,7 +52,8 @@
 }
 
 .minigame-back {
-    background-color: var(--primary-purple);
+    background-color: #6C5CE7;
+    /* Specific purple from image/theme */
     color: white;
     transform: rotateY(180deg);
 }
@@ -73,15 +75,24 @@
 
 .minigame-back p {
     margin-bottom: var(--space-xl);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    /* Slightly larger text */
+    line-height: 1.4;
+    max-width: 80%;
 }
 
 .btn-play {
     background: white;
     color: black;
     border: none;
-    padding: 8px 20px;
-    border-radius: 8px;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-play:hover {
+    transform: scale(1.05);
 }

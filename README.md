@@ -1,6 +1,6 @@
-# 🏴‍☠️ Treasure Hunt: La Búsqueda del Tesoro Urbana
+# 🏴‍☠️ MapHunter: La Búsqueda del Tesoro Urbana
 
-¡Bienvenido a **Treasure Hunt**! Una experiencia web inmersiva diseñada para cazadores de tesoros modernos. Este proyecto combina una estética cinemática inspirada en los grandes títulos de videojuegos con una interfaz de usuario dinámica e interactiva.
+¡Bienvenido a **MapHunter**! Una experiencia web inmersiva diseñada para cazadores de tesoros modernos. Este proyecto combina una estética cinemática inspirada en los grandes títulos de videojuegos con una interfaz de usuario dinámica e interactiva.
 
 ## ✨ Características Principales
 

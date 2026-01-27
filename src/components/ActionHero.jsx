@@ -24,8 +24,17 @@ const ActionHero = () => {
             {/* Capa de Fondo - Ciudad Panorámica */}
             <motion.div
                 className="action-parallax-bg"
-                style={{ y: bgY, scale: bgScale, backgroundImage: `url('/hero-rockstar-bg.png')` }}
-            />
+                style={{ y: bgY, scale: bgScale }}
+            >
+                <video
+                    src="/action-bg.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="action-bg-video"
+                />
+            </motion.div>
 
 
             {/* Overlay Cinemático */}

@@ -5,6 +5,8 @@ import InteractiveSection from './components/InteractiveSection';
 import Minigames from './components/Minigames';
 import Leaderboard from './components/Leaderboard';
 import ShopSection from './components/ShopSection';
+import PlansSection from './components/PlansSection';
+import TrailerSection from './components/TrailerSection';
 import ActionHero from './components/ActionHero';
 import Footer from './components/Footer';
 import './App.css';
@@ -20,7 +22,9 @@ function App() {
         <InteractiveSection />
         <Minigames />
         <Leaderboard />
+        <TrailerSection />
         <ShopSection />
+        <PlansSection />
       </main>
       <Footer />
     </div>

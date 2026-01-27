@@ -5,7 +5,7 @@ import './ShopSection.css';
 const powerUps = [
     { id: 'blackout', name: 'Pantalla Negra', desc: 'Oscurece la visión de tus rivales.', icon: '🌑', color: '#000000', price: 100 },
     { id: 'health', name: 'Vida', desc: 'Restaura tus puntos de salud al máximo.', icon: '❤️', color: '#ff4757', price: 50 },
-    { id: 'return', name: 'Devolución', desc: 'Regresa al último punto seguro.', icon: '🔄', color: '#2ed573', price: 90 },
+    { id: 'return', name: 'Revertir el Poder', desc: 'Cambia el destino de un poder recibido.', icon: '🔄', color: '#2ed573', price: 90 },
     { id: 'blur', name: 'Pantalla Borrosa', desc: 'Confunde los sentidos del oponente.', icon: '🌫️', color: '#747d8c', price: 110 },
     { id: 'freeze', name: 'Congelar', desc: 'Detén el tiempo y a tus enemigos.', icon: '❄️', color: '#70a1ff', price: 50 },
     { id: 'shield', name: 'Escudo', desc: 'Bloquea el próximo ataque enemigo.', icon: '🛡️', color: '#ffa502', price: 150 },
@@ -132,7 +132,7 @@ const ShopSection = () => {
             <div className="container">
                 <div className="shop-header">
                     <h2 className="section-title">La Tiendita Mágica</h2>
-                    <p>Equípate con habilidades únicas para dominar el ranking.</p>
+                    <p>Prueba nuestros poderes dándole clic.</p>
                 </div>
 
                 <div className="shop-layout">

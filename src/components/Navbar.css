@@ -13,7 +13,7 @@
 
 .navbar.scrolled {
     height: 70px;
-    background: rgba(10, 14, 39, 0.9);
+    background: rgba(10, 14, 39, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -26,15 +26,47 @@
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #ffd700;
+    /* Gold color */
+    z-index: 1001;
+    position: relative;
+}
+
+.logo::before,
+.logo::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.logo::before {
+    left: 1px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(10px, 150px, 20px, 0);
+    animation: glitch-anim 4s infinite linear alternate-reverse;
+}
+
+.logo::after {
+    left: -1px;
+    text-shadow: -1px 0 #00fff9;
+    animation: glitch-anim2 0.8s infinite linear alternate-reverse;
 }
 
 .logo span {
-    color: var(--primary-purple);
+    background: linear-gradient(135deg, #a29bfe 0%, #ff7675 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 1px white);
 }
 
 .nav-links {
@@ -48,6 +80,7 @@
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -56,13 +89,48 @@
 
 .btn-nav {
     background: var(--primary-gradient);
-    padding: 8px 20px !important;
+    padding: 8px 24px !important;
     border-radius: 8px;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+}
+
+.mobile-menu-btn {
+    display: none;
+    cursor: pointer;
+    color: white;
+    z-index: 1001;
+    /* Stay above mobile menu */
 }
 
 @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 14, 39, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 3rem;
+        transition: right 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        z-index: 1000;
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+    }
+
+    .btn-nav {
+        padding: 15px 40px !important;
     }
 }

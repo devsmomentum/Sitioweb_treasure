@@ -13,14 +13,46 @@
 }
 
 .footer-logo {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #ffd700;
+    /* Gold color */
+    position: relative;
+}
+
+.footer-logo::before,
+.footer-logo::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.footer-logo::before {
+    left: 1px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(10px, 200px, 30px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.footer-logo::after {
+    left: -1px;
+    text-shadow: -1px 0 #00fff9;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
 }
 
 .footer-logo span {
-    color: var(--primary-purple);
+    background: linear-gradient(135deg, #a29bfe 0%, #ff7675 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 1px white);
 }
 
 .footer-links {
@@ -64,7 +96,21 @@
 
 .social-links a {
     color: rgba(255, 255, 255, 0.5);
-    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover {
+    color: #a29bfe;
+    transform: scale(1.2);
+}
+
+.social-links a.whatsapp:hover {
+    color: #25D366;
+    /* WhatsApp Green */
+    filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.5));
 }
 
 @media (max-width: 768px) {
