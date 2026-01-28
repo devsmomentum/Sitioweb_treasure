@@ -66,7 +66,7 @@ const VideoModal = ({ isOpen, onClose }) => {
                                 className="trailer-video"
                                 poster="/hero.png"
                             >
-                                <source src="/trailer.mp4" type="video/mp4" />
+                                <source src="/lv_0_20260128150746.mp4" type="video/mp4" />
                                 Tu navegador no soporta la reproducción de video.
                             </video>
                         </motion.div>

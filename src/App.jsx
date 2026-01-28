@@ -8,6 +8,7 @@ import ShopSection from './components/ShopSection';
 import PlansSection from './components/PlansSection';
 import TrailerSection from './components/TrailerSection';
 import ActionHero from './components/ActionHero';
+import CharactersVideo from './components/CharactersVideo';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -21,9 +22,10 @@ function App() {
         <Features />
         <InteractiveSection />
         <Minigames />
+        <CharactersVideo />
         <Leaderboard />
-        <TrailerSection />
         <ShopSection />
+        <TrailerSection />
         <PlansSection />
       </main>
       <Footer />
