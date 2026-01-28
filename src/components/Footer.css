@@ -83,10 +83,18 @@
     padding-top: var(--space-2xl);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: var(--space-l);
     color: rgba(255, 255, 255, 0.3);
     font-size: 0.8rem;
+    text-align: center;
+}
+
+.copyright-info p {
+    margin: 0;
+    line-height: 1.5;
+    text-align: center;
 }
 
 .social-links {

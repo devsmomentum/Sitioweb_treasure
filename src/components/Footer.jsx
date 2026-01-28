@@ -30,7 +30,10 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>&copy; 2026 MapHunter. Todos los derechos reservados.</p>
+                    <div className="copyright-info">
+                        <p>&copy; 2026 MapHunter. Todos los derechos reservados.</p>
+                        <p>Desarrollado por JD and Morna.tech</p>
+                    </div>
                     <div className="social-links">
                         <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
                         <a href="#" aria-label="YouTube"><Youtube size={20} /></a>
