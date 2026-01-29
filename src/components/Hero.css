@@ -185,25 +185,21 @@
     }
 
     .logo-lockup-urban h1 {
-        font-size: 18vw;
-        /* Better scaling for mobile */
-        letter-spacing: -2px;
+        font-size: 16vw;
+        letter-spacing: -1px;
     }
 
     .urban-tagline {
-        font-size: 0.8rem;
-        letter-spacing: 4px;
-        /* Reduced to fit better */
-        margin-top: 15px;
-        line-height: 1.4;
-        max-width: 280px;
-        margin-left: auto;
-        margin-right: auto;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        margin-top: 20px;
+        padding: 0 10%;
     }
 
     .hero-actions-urban {
         flex-direction: column;
         width: 100%;
+        max-width: 300px;
         gap: 12px;
         margin-top: 40px;
     }
@@ -216,5 +212,14 @@
 
     .hero-content-urban {
         padding: 0 20px;
+    }
+
+    .scroll-hint-urban {
+        bottom: 20px;
+        gap: 10px;
+    }
+
+    .scroll-bar {
+        height: 30px;
     }
 }

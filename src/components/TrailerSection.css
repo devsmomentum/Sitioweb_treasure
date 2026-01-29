@@ -171,30 +171,41 @@
 
 @media (max-width: 768px) {
     .trailer-hero-section {
-        height: 80vh;
+        height: 100vh;
     }
 
     .trailer-content-overlay {
         text-align: center;
         justify-content: center;
+        padding: 0 30px;
     }
 
     .trailer-info {
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .trailer-title {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
 
     .trailer-desc {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
 
     .trailer-nav-controls {
-        bottom: 5%;
+        bottom: 8%;
         right: 50%;
         transform: translateX(50%);
+        gap: 10px;
+    }
+
+    .nav-btn-urban {
+        width: 50px;
+        height: 50px;
     }
 
     .trailer-indicators-urban {

@@ -219,13 +219,35 @@
     .leaderboard-header,
     .leaderboard-row {
         grid-template-columns: 50px 1fr 80px;
+        padding: var(--space-m) var(--space-l);
     }
 
-    .player-class {
+    .player-class,
+    .player-level {
         display: none;
     }
 
-    .leaderboard-header span:nth-child(3) {
+    .leaderboard-header span:nth-child(3),
+    .leaderboard-header span:nth-child(4) {
         display: none;
+    }
+
+    .player-name {
+        font-size: 0.9rem;
+    }
+
+    .player-rank {
+        font-size: 1.1rem;
+    }
+
+    .leaderboard-container::after {
+        content: '← Desliza para ver XP →';
+        display: block;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.7rem;
+        color: var(--secondary-pink);
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 }

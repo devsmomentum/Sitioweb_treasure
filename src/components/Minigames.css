@@ -96,3 +96,32 @@
 .btn-play:hover {
     transform: scale(1.05);
 }
+
+@media (max-width: 768px) {
+    .minigames-section {
+        padding: var(--space-2xl) 0;
+    }
+
+    .minigames-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--space-l);
+    }
+
+    .minigame-card {
+        height: 260px;
+    }
+
+    .mg-icon {
+        font-size: 2.5rem;
+    }
+
+    .minigame-back p {
+        font-size: 0.9rem;
+        margin-bottom: var(--space-l);
+    }
+
+    .btn-play {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+}

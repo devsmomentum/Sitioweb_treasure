@@ -156,13 +156,42 @@
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .plans-header h2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
+    }
+
+    .matrix-container {
+        padding: 10px;
+        margin: 0 10px 40px;
+    }
+
+    .matrix-wrapper::after {
+        content: '← Desliza para ver beneficios →';
+        display: block;
+        text-align: center;
+        padding: 15px;
+        font-size: 0.75rem;
+        color: var(--secondary-pink);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 800;
+        animation: pulse 2s infinite;
+    }
+}
+
+@media (max-width: 768px) {
+    .plans-section {
+        padding: 60px 0;
+    }
+
+    .plans-header h2 {
+        font-size: 2rem;
     }
 
     .plans-header p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 0 20px;
     }
 
     .benefit-matrix th,
@@ -172,32 +201,33 @@
     }
 
     .benefit-name {
-        min-width: 160px;
+        min-width: 140px;
+        font-size: 0.8rem;
     }
 
     .level-header {
-        min-width: 100px;
+        min-width: 90px;
     }
 
     .level-label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .level-subtitle {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
-/* Scroll hint for matrix on mobile */
-@media (max-width: 900px) {
-    .matrix-wrapper::after {
-        content: '← Desliza para ver más →';
-        display: block;
-        text-align: center;
-        padding: 10px;
-        font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.4);
-        text-transform: uppercase;
-        letter-spacing: 2px;
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
     }
 }

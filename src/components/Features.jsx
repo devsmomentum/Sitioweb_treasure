@@ -6,28 +6,28 @@ const features = [
     {
         title: 'Exploración Real',
         description: 'Usa tu teléfono para encontrar tesoros físicos en tu ciudad. El mundo real es tu tablero.',
-        icon: '📍',
+        icon: '/ubicacion.png',
         color: '#6C5CE7',
         id: 'exploration'
     },
     {
         title: 'Puzzles con QR',
         description: 'Escanea códigos ocultos para desbloquear pistas, resolver acertijos y avanzar en la historia.',
-        icon: '📷',
+        icon: '/camara.png',
         color: '#FF6B9D',
         id: 'qr'
     },
     {
         title: 'Rastreo FRÍO o CALIENTE',
         description: 'Siente la emoción de la búsqueda con nuestro sistema de proximidad en tiempo real.',
-        icon: '🔥',
+        icon: '/fuego.png',
         color: '#FFB142',
         id: 'tracking'
     },
     {
         title: 'Ranking Competitivo',
         description: 'Sube a la cima de la tabla regional y gana recompensas exclusivas por tus logros.',
-        icon: '🏆',
+        icon: '/trofeo.png',
         color: '#FFD700',
         id: 'ranking'
     }
@@ -65,7 +65,11 @@ const Features = () => {
                                         repeatDelay: f.id === 'qr' ? 0.5 : 0
                                     }}
                                 >
-                                    {f.icon}
+                                    <img
+                                        src={f.icon}
+                                        alt={f.title}
+                                        className={`feature-icon-img ${f.id === 'qr' ? 'camera-icon' : ''} ${f.id === 'ranking' ? 'trophy-icon' : ''}`}
+                                    />
                                 </motion.div>
 
                                 {/* Camera Flash Effect */}

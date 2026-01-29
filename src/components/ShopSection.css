@@ -285,31 +285,60 @@
         position: relative;
         top: 0;
         padding: var(--space-xl);
+        flex-direction: row;
+        gap: 20px;
+        text-align: left;
     }
 
     .npc-avatar {
         font-size: 4rem;
+        margin-bottom: 0;
+    }
+
+    .npc-speech {
+        text-align: left;
     }
 }
 
 @media (max-width: 768px) {
+    .shop-section {
+        padding: var(--space-2xl) 0;
+    }
+
     .shop-item {
-        padding: 15px;
+        padding: 12px;
     }
 
     .item-icon {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .item-info h4 {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+
+    .item-info p {
+        font-size: 0.8rem;
     }
 
     .item-price {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .items-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .npc-container {
+        padding: 15px;
+    }
+
+    .npc-avatar {
+        font-size: 3rem;
+    }
+
+    .npc-speech {
+        font-size: 0.95rem;
     }
 }
