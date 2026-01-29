@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Volume2, VolumeX } from 'lucide-react';
 import './TrailerSection.css';
 
 const videos = [
@@ -11,6 +11,11 @@ const videos = [
     },
     {
         id: 2,
+        src: "/JD.mp4",
+        title: "Explora tu Mundo"
+    },
+    {
+        id: 3,
         src: "/trailer_old.mp4",
         title: "En Acción"
     }
@@ -18,6 +23,7 @@ const videos = [
 
 const TrailerSection = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMuted, setIsMuted] = useState(true);
     const containerRef = useRef(null);
 
     const { scrollYProgress } = useScroll({
@@ -37,8 +43,8 @@ const TrailerSection = () => {
         setCurrentIndex((prev) => (prev + 1) % videos.length);
     };
 
-    const prevVideo = () => {
-        setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+    const toggleMute = () => {
+        setIsMuted(!isMuted);
     };
 
     return (
@@ -58,10 +64,10 @@ const TrailerSection = () => {
                         key={videos[currentIndex].src}
                         src={videos[currentIndex].src}
                         autoPlay
-                        loop
-                        muted
+                        muted={isMuted}
                         playsInline
                         className="trailer-bg-video"
+                        onEnded={nextVideo}
                     />
                 </motion.div>
             </AnimatePresence>
@@ -69,15 +75,14 @@ const TrailerSection = () => {
             {/* Cinematic Overlay */}
             <div className="trailer-vignette"></div>
 
-            {/* Navigation Controls */}
-            <div className="trailer-nav-controls">
-                <button className="nav-btn-urban prev" onClick={prevVideo} aria-label="Video anterior">
-                    <ChevronLeft size={40} />
-                </button>
-                <button className="nav-btn-urban next" onClick={nextVideo} aria-label="Siguiente video">
-                    <ChevronRight size={40} />
-                </button>
-            </div>
+            {/* Sound Control */}
+            <button
+                className="sound-toggle-btn"
+                onClick={toggleMute}
+                aria-label={isMuted ? "Activar sonido" : "Desactivar sonido"}
+            >
+                {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+            </button>
 
             {/* Content Overlay */}
             <motion.div

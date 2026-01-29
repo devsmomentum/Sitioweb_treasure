@@ -6,12 +6,34 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [isHidden, setIsHidden] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+
+    // Observer for hiding navbar on trailer section
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHidden(entry.isIntersecting);
+      },
+      { threshold: 0.25 } // Hide when 25% of trailer is visible
+    );
+
+    const trailerSection = document.getElementById('trailer');
+    if (trailerSection) {
+      observer.observe(trailerSection);
+    }
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (trailerSection) {
+        observer.unobserve(trailerSection);
+      }
+    };
   }, []);
 
   const toggleMobileMenu = () => {
@@ -19,7 +41,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isHidden ? 'navbar-hidden' : ''}`}>
       <div className="navbar-container container">
         <div className="logo" data-text="MapHunter">
           MapHunter

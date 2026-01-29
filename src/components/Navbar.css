@@ -18,11 +18,31 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.navbar-hidden {
+    transform: translateY(-100%) !important;
+    pointer-events: none;
+    opacity: 0;
+}
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1001;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
 }
 
 .logo {
