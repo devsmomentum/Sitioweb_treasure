@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
           <a href="#features" onClick={() => setMobileMenuOpen(false)}>Características</a>
           <a href="#shop" onClick={() => setMobileMenuOpen(false)}>Tienda</a>
-          <a href="#contact" className="btn-nav" onClick={() => setMobileMenuOpen(false)}>Descargar Ahora</a>
+          <a href="https://prueba.maphunter.online" className="btn-nav" onClick={() => setMobileMenuOpen(false)}>Prueba Ahora</a>
         </div>
 
         <div className="mobile-menu-btn" onClick={toggleMobileMenu}>

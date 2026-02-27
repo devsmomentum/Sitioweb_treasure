@@ -35,8 +35,8 @@ const Footer = () => {
                         <p>Desarrollado por JD and Morna.tech</p>
                     </div>
                     <div className="social-links">
-                        <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
-                        <a href="#" aria-label="YouTube"><Youtube size={20} /></a>
+                        <a href="https://www.instagram.com/maphunter.world?igsh=MTYzMjk5NDVncmZpZQ==" aria-label="Instagram"><Instagram size={20} /></a>
+
                         <a href="#" aria-label="WhatsApp" className="whatsapp"><MessageCircle size={20} /></a>
                     </div>
                 </div>

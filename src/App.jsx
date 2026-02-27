@@ -10,6 +10,7 @@ import TrailerSection from './components/TrailerSection';
 import ActionHero from './components/ActionHero';
 import CharactersVideo from './components/CharactersVideo';
 import Footer from './components/Footer';
+import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <PlansSection />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
