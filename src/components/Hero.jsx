@@ -59,7 +59,7 @@ const Hero = () => {
                     >
                         Ver Tráiler
                     </button>
-                    <button className="btn-urban secondary">Empezar Búsqueda</button>
+                    <button className="btn-urban secondary" onClick={() => window.location.href = 'https://prueba.maphunter.online'}>Empezar Búsqueda</button>
                 </div>
             </motion.div>
 
