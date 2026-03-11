@@ -3,7 +3,7 @@
     height: 120vh;
     width: 100%;
     overflow: hidden;
-    background: #000;
+    background: var(--surface-0, #0a0a1a);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,8 +28,8 @@
     position: absolute;
     inset: 0;
     z-index: 10;
-    background: linear-gradient(to bottom, #000 0%, transparent 20%, transparent 80%, #000 100%),
-        radial-gradient(circle at 50% 50%, transparent 30%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(to bottom, var(--surface-0, #0a0a1a) 0%, transparent 20%, transparent 80%, var(--surface-0, #0a0a1a) 100%),
+        radial-gradient(circle at 50% 50%, transparent 30%, rgba(10, 10, 26, 0.6) 100%);
     pointer-events: none;
 }
 
@@ -50,7 +50,7 @@
     font-size: 0.85rem;
     letter-spacing: 5px;
     font-weight: 800;
-    color: var(--secondary-pink);
+    color: var(--gold-main);
     text-transform: uppercase;
 }
 
@@ -60,12 +60,12 @@
     letter-spacing: -2px;
     text-transform: uppercase;
     line-height: 0.95;
-    background: linear-gradient(180deg, #FFFFFF 10%, #ff00c1 100%);
+    background: linear-gradient(180deg, #FFFFFF 10%, var(--gold-main) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
-    text-shadow: 0 0 20px rgba(255, 0, 193, 0.3);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .action-description {
@@ -84,8 +84,8 @@
 }
 
 .btn-action {
-    background: white;
-    color: black;
+    background: var(--gold-gradient);
+    color: #0a0a1a;
     border: none;
     padding: 18px 40px;
     font-weight: 900;
@@ -93,13 +93,13 @@
     letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
 }
 
 .btn-action:hover {
-    background: var(--primary-purple);
-    color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
 }
 
 .live-indicator {

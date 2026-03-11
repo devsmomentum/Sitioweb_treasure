@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Leaderboard.css';
 
@@ -44,17 +44,30 @@ const Confetti = ({ count = 50 }) => {
 
 const Leaderboard = () => {
     const [celebrate, setCelebrate] = useState(false);
+    const [inView, setInView] = useState(false);
+    const containerRef = useRef(null);
 
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => setInView(entry.isIntersecting),
+            { threshold: 0.1 }
+        );
+        if (containerRef.current) observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!inView) return;
+        
         const interval = setInterval(() => {
             setCelebrate(true);
             setTimeout(() => setCelebrate(false), 3000);
-        }, 8000); // Celebra cada 8 segundos
+        }, 8000); 
         return () => clearInterval(interval);
-    }, []);
+    }, [inView]);
 
     return (
-        <section id="leaderboard" className="leaderboard-section">
+        <section id="leaderboard" className={`leaderboard-section ${!inView ? 'paused-animations' : ''}`} ref={containerRef}>
             <AnimatePresence>
                 {celebrate && <Confetti />}
             </AnimatePresence>

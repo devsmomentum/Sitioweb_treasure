@@ -7,28 +7,28 @@ const features = [
         title: 'Exploración Real',
         description: 'Usa tu teléfono para encontrar tesoros físicos en tu ciudad. El mundo real es tu tablero.',
         icon: '/ubicacion.png',
-        color: '#6C5CE7',
+        color: '#9b59b6', // Brand Main
         id: 'exploration'
     },
     {
         title: 'Puzzles con QR',
         description: 'Escanea códigos ocultos para desbloquear pistas, resolver acertijos y avanzar en la historia.',
         icon: '/camara.png',
-        color: '#FF6B9D',
+        color: '#c39bd3', // Brand Light
         id: 'qr'
     },
     {
         title: 'Rastreo FRÍO o CALIENTE',
         description: 'Siente la emoción de la búsqueda con nuestro sistema de proximidad en tiempo real.',
         icon: '/fuego.png',
-        color: '#FFB142',
+        color: '#FFE16A', // Gold Light
         id: 'tracking'
     },
     {
         title: 'Ranking Competitivo',
         description: 'Sube a la cima de la tabla regional y gana recompensas exclusivas por tus logros.',
         icon: '/trofeo.png',
-        color: '#FFD700',
+        color: '#FFD700', // Gold Main
         id: 'ranking'
     }
 ];
@@ -111,7 +111,7 @@ const Features = () => {
                                                     className="confetti"
                                                     style={{
                                                         left: `${Math.random() * 100}%`,
-                                                        backgroundColor: ['#FFD700', '#FF6B9D', '#6C5CE7', '#FFB142'][idx % 4]
+                                                        backgroundColor: ['#FFD700', '#c39bd3', '#9b59b6', '#B8860B'][idx % 4]
                                                     }}
                                                     initial={{ y: 0, opacity: 1, rotate: 0 }}
                                                     animate={{

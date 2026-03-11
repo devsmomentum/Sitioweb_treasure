@@ -1,4 +1,4 @@
-import { Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Instagram, Youtube, MessageSquare, Music2 } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -6,7 +6,8 @@ const Footer = () => {
         <footer className="footer">
             <div className="container">
                 <div className="footer-content">
-                    <div className="footer-logo" data-text="MapHunter">
+                    <div className="footer-logo">
+                        <img src="/logo-maphunter.png" alt="MapHunter" className="footer-logo-img" />
                         MapHunter
                     </div>
                     <div className="footer-links">
@@ -24,20 +25,38 @@ const Footer = () => {
                         </div>
                         <div className="link-group">
                             <h4>Legal</h4>
-                            <a href="#">Términos de Servicio</a>
-                            <a href="#">Privacidad</a>
+                            <a href="/Terminos_y_Condiciones_Maphunter.pdf" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a>
                         </div>
                     </div>
                 </div>
                 <div className="footer-bottom">
                     <div className="copyright-info">
                         <p>&copy; 2026 MapHunter. Todos los derechos reservados.</p>
-                        <p>Desarrollado por JD and Morna.tech</p>
+                        <div className="partner-section">
+                            <p className="developed-by">Desarrollado por:</p>
+                            <div className="partner-logos">
+                                <img src="https://morna.tech/wp-content/uploads/2024/05/Recurso-3@2x.png" alt="Morna Tech" className="partner-logo" />
+                                <img src="/gana_con_naza_logo.png" alt="Gana con Naza" className="partner-logo" />
+                                <img src="/jd_naza_logo.png" alt="JD Naza" className="partner-logo" />
+                            </div>
+                        </div>
                     </div>
                     <div className="social-links">
-                        <a href="https://www.instagram.com/maphunter.world?igsh=MTYzMjk5NDVncmZpZQ==" aria-label="Instagram"><Instagram size={20} /></a>
-
-                        <a href="#" aria-label="WhatsApp" className="whatsapp"><MessageCircle size={20} /></a>
+                        <a href="https://www.instagram.com/maphunter.world?igsh=MWhlb2VtbWRkbW1ieA==" aria-label="Instagram" className="social-link-item">
+                            <svg viewBox="0 0 24 24" className="social-svg-icon">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.584.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@maphunter79?_r=1&_t=ZS-94bMps2n1lK" aria-label="TikTok" className="social-link-item">
+                            <svg viewBox="0 0 24 24" className="social-svg-icon">
+                                <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.14 1.02.14 2.07.78 2.87.64.81 1.66 1.33 2.68 1.33 1.25 0 2.39-.78 2.84-1.94.3-.77.34-1.59.34-2.4 0-3.5-.01-7.01.01-10.51.01-2.97.01-5.94.01-8.91z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/584124780618" aria-label="WhatsApp" className="social-link-item">
+                            <svg viewBox="0 0 24 24" className="social-svg-icon">
+                                <path d="M19.057 4.864c-1.89-1.896-4.405-2.94-7.087-2.942-5.52 0-10.012 4.492-10.014 10.011 0 1.765.462 3.488 1.34 5.01l-1.426 5.21 5.33-1.398c1.464.798 3.111 1.218 4.787 1.22h.004c5.518 0 10.011-4.493 10.014-10.011 0-2.674-1.042-5.189-2.932-7.09zm-7.087 15.604c-1.583-.001-3.134-.424-4.486-1.224l-.322-.191-3.186.835.849-3.097-.21-.334c-.878-1.398-1.341-3.018-1.34-4.685.002-4.757 3.872-8.627 8.632-8.627 2.305.001 4.474.9 6.103 2.53 1.63 1.63 2.528 3.799 2.527 6.104-.002 4.758-3.872 8.628-8.63 8.629zm4.734-6.463c-.259-.13-1.536-.758-1.774-.845-.239-.088-.413-.131-.586.13-.173.261-.67.845-.821 1.019-.151.174-.303.195-.562.065-.259-.13-1.092-.403-2.079-1.284-.768-.686-1.287-1.532-1.439-1.793-.151-.261-.016-.402.115-.532l.394-.46c.13-.152.173-.261.26-.434.086-.174.043-.326-.021-.457-.065-.13-.586-1.413-.804-1.943-.213-.516-.448-.445-.586-.452-.131-.006-.282-.007-.433-.007-.152 0-.401.057-.61.282-.21.226-.801.783-.801 1.91s.823 2.213.937 2.368c.115.155 1.621 2.476 3.927 3.472.55.237.978.378 1.312.485.553.176 1.056.151 1.454.092.443-.066 1.36-.557 1.554-1.096.195-.54.195-1.001.137-1.1-.058-.098-.216-.158-.475-.288z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>

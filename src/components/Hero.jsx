@@ -41,14 +41,14 @@ const Hero = () => {
                 style={{ y: textY, opacity: textOpacity }}
             >
                 <div className="logo-lockup-urban">
-                    <motion.h1
+                    <motion.div
+                        className="hero-logo-container"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
-                        data-text="MapHunter"
                     >
-                        MapHunter
-                    </motion.h1>
+                        <img src="/logo-maphunter.png" alt="MapHunter Logo" className="hero-logo-img" />
+                    </motion.div>
                     <span className="urban-tagline">LA BÚSQUEDA DEL TESORO EN TU CIUDAD</span>
                 </div>
 

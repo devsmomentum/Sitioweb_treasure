@@ -5,7 +5,6 @@ import './Navbar.css';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
@@ -13,12 +12,11 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    // Observer for hiding navbar on trailer section
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsHidden(entry.isIntersecting);
       },
-      { threshold: 0.25 } // Hide when 25% of trailer is visible
+      { threshold: 0.25 }
     );
 
     const trailerSection = document.getElementById('trailer');
@@ -43,8 +41,9 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isHidden ? 'navbar-hidden' : ''}`}>
       <div className="navbar-container container">
-        <div className="logo" data-text="MapHunter">
-          MapHunter
+        <div className="logo-container">
+          <img src="/logo-maphunter.png" alt="MapHunter" className="logo-img" />
+          <span className="logo-text">MapHunter</span>
         </div>
 
         <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>

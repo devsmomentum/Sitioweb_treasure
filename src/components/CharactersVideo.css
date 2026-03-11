@@ -1,12 +1,13 @@
 .characters-video-section {
     position: relative;
-    height: 100vh;
+    min-height: 80vh; /* Changed from 100vh to be more flexible */
     width: 100%;
     overflow: hidden;
-    background: #000;
+    background: #0a0a1a;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 80px 0;
 }
 
 .characters-video-parallax {
@@ -26,9 +27,8 @@
     position: absolute;
     inset: 0;
     z-index: 5;
-    background: linear-gradient(to bottom, #000 0%, transparent 20%, transparent 80%, #000 100%),
-        linear-gradient(to left, rgba(0, 0, 0, 0.7) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+    background: radial-gradient(circle at center, transparent 30%, rgba(10, 10, 26, 0.7) 100%),
+                linear-gradient(to top, var(--surface-0) 0%, transparent 20%, transparent 80%, var(--surface-0) 100%);
     pointer-events: none;
 }
 
@@ -41,34 +41,38 @@
     padding: 0 5%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 40px; /* Moves text to the top part */
+    text-align: left;
 }
 
 .characters-video-label {
     font-size: 0.9rem;
     letter-spacing: 5px;
     font-weight: 800;
-    color: var(--secondary-pink, #ff00c1);
+    color: var(--gold-main, #FFD700);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     text-transform: uppercase;
     margin-bottom: 20px;
 }
 
 .characters-video-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2.2rem, 6vw, 4rem);
     font-weight: 900;
     color: white;
     text-transform: uppercase;
-    line-height: 0.9;
-    margin-bottom: 25px;
+    line-height: 0.95;
+    margin-bottom: 20px;
 }
 
 .characters-video-title span {
     display: block;
-    background: linear-gradient(135deg, #ff00c1 0%, #ff7675 100%);
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
 }
 
 .characters-video-desc {
@@ -87,8 +91,8 @@
 }
 
 .btn-characters-video {
-    background: white;
-    color: black;
+    background: var(--gold-gradient, linear-gradient(135deg, #FFD700, #B8860B));
+    color: #0a0a1a;
     border: none;
     padding: 18px 40px;
     font-weight: 950;
@@ -99,10 +103,8 @@
 }
 
 .btn-characters-video:hover {
-    background: var(--secondary-pink, #ff00c1);
-    color: white;
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(255, 0, 193, 0.4);
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
 }
 
 .characters-live-info {

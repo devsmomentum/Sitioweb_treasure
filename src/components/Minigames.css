@@ -1,127 +1,150 @@
 .minigames-section {
-    padding: var(--space-4xl) 0;
+    padding: 100px 0;
+    position: relative;
+}
+
+.label-centered {
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    font-weight: 800;
+    color: var(--brand-light);
+    margin-bottom: 15px;
 }
 
 .minigames-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
 }
 
-.minigame-card {
-    height: 300px;
-    perspective: 1000px;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-}
-
-.minigame-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-.minigame-card:hover .minigame-inner {
-    transform: rotateY(180deg);
-}
-
-.minigame-front,
-.minigame-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
+/* Cartridge Design */
+.cartridge-card {
+    background: #2d3436; /* Classic gray cartridge color */
+    border-radius: 12px 12px 4px 4px;
     display: flex;
     flex-direction: column;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.cartridge-top {
+    height: 40px;
+    background: #1e272e;
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 40px;
-    /* More rounded like the image */
-    padding: var(--space-2xl);
+    position: relative;
 }
 
-.minigame-front {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.cartridge-ribbon {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 40px;
+    height: 100%;
 }
 
-.minigame-back {
-    background-color: #6C5CE7;
-    /* Specific purple from image/theme */
+.cartridge-label {
+    font-size: 0.6rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+}
+
+.cartridge-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mg-visual {
+    height: 160px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #1e272e;
+}
+
+.mg-icon-large {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    z-index: 2;
+}
+
+.mg-scanline {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mg-info h4 {
+    font-size: 1.4rem;
     color: white;
-    transform: rotateY(180deg);
+    margin-bottom: 5px;
 }
 
-.mg-icon {
-    font-size: 3.5rem;
-    margin-bottom: var(--space-l);
-}
-
-.mg-type {
-    margin-top: var(--space-l);
-    padding: 4px 12px;
-    border: 1px solid;
-    border-radius: 20px;
+.mg-tag {
     font-size: 0.75rem;
+    font-weight: 800;
     text-transform: uppercase;
-    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-.minigame-back p {
-    margin-bottom: var(--space-xl);
-    font-size: 1.1rem;
-    /* Slightly larger text */
+.mg-info p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
     line-height: 1.4;
-    max-width: 80%;
+    margin-top: 10px;
 }
 
-.btn-play {
-    background: white;
-    color: black;
-    border: none;
-    padding: 12px 32px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 700;
+.btn-cartridge {
+    background: transparent;
+    border: 2px solid;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 900;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
+    margin-top: auto;
 }
 
-.btn-play:hover {
-    transform: scale(1.05);
+.btn-cartridge:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
 }
 
-@media (max-width: 768px) {
-    .minigames-section {
-        padding: var(--space-2xl) 0;
-    }
+.cartridge-pins {
+    height: 12px;
+    background: #1e272e;
+    display: flex;
+    justify-content: space-around;
+    padding: 2px 20px;
+}
 
-    .minigames-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: var(--space-l);
-    }
-
-    .minigame-card {
-        height: 260px;
-    }
-
-    .mg-icon {
-        font-size: 2.5rem;
-    }
-
-    .minigame-back p {
-        font-size: 0.9rem;
-        margin-bottom: var(--space-l);
-    }
-
-    .btn-play {
-        padding: 10px 24px;
-        font-size: 0.95rem;
-    }
+.pin {
+    width: 4px;
+    height: 100%;
+    background: #f1c40f; /* Copper/Gold pins */
+    border-radius: 1px;
+    opacity: 0.6;
 }

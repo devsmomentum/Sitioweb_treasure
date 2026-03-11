@@ -1,21 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './InteractiveSection.css';
 
 const InteractiveSection = () => {
-    const [proximity, setProximity] = useState(0); // 0 to 100
+    const [proximity, setProximity] = useState(0);
     const [status, setStatus] = useState('FRIO');
+    const [inView, setInView] = useState(false);
+    const containerRef = useRef(null);
 
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => setInView(entry.isIntersecting),
+            { threshold: 0.1 }
+        );
+        if (containerRef.current) observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!inView) return;
+        
         const interval = setInterval(() => {
             setProximity(prev => {
                 const next = prev + 1;
                 if (next > 100) return 0;
                 return next;
             });
-        }, 80);
+        }, 100);
         return () => clearInterval(interval);
-    }, []);
+    }, [inView]);
 
     useEffect(() => {
         if (proximity < 25) setStatus('FRIO');
@@ -29,116 +42,88 @@ const InteractiveSection = () => {
         return `${s} ${icons[s] || ''}`;
     };
 
-    // Color interpolation
-    const getBackgroundColor = () => {
-        if (proximity < 50) {
-            // Cold to Warm (Blue to Yellow)
-            const ratio = proximity / 50;
-            return `rgba(${108 + (255 - 108) * ratio}, ${92 + (177 - 92) * ratio}, ${231 - (231 - 66) * ratio}, 0.15)`;
-        } else {
-            // Warm to Burning (Yellow to Red)
-            const ratio = (proximity - 50) / 50;
-            return `rgba(255, ${177 - (177 - 71) * ratio}, ${66 - (66 - 87) * ratio}, 0.25)`;
-        }
-    };
-
     return (
-        <section className="interactive-section" style={{
-            backgroundColor: 'transparent',
-            position: 'relative',
-            overflow: 'hidden'
-        }}>
-            {/* Dynamic Background Layer */}
-            <motion.div
-                className="dynamic-bg"
-                animate={{
-                    backgroundColor: getBackgroundColor(),
-                }}
-                transition={{ duration: 0.5 }}
-                style={{
-                    position: 'absolute',
-                    inset: 0,
-                    zIndex: 0
-                }}
-            />
-
-            {/* Background Particles/Waves */}
-            {[...Array(5)].map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="energy-wave"
-                    style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '2px',
-                        background: proximity > 50
-                            ? 'linear-gradient(90deg, transparent, rgba(255, 71, 87, 0.3), transparent)'
-                            : 'linear-gradient(90deg, transparent, rgba(92, 199, 231, 0.3), transparent)',
-                        top: `${20 * i + 10}%`,
-                        left: '-100%',
-                        zIndex: 1
-                    }}
-                    animate={{
-                        left: ['100%', '-100%'],
-                        opacity: [0, 1, 0]
-                    }}
-                    transition={{
-                        duration: 3 + i,
-                        repeat: Infinity,
-                        ease: "linear",
-                        delay: i * 0.5
-                    }}
-                />
-            ))}
-
-            <div className="container grid-2" style={{ position: 'relative', zIndex: 2 }}>
-                <div className="interactive-text">
-                    <motion.h2
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                    >
-                        Geolocalización
-                    </motion.h2>
+        <section className={`interactive-section ${!inView ? 'paused-animations' : ''}`} ref={containerRef}>
+            <div className="container radar-grid">
+                <motion.div 
+                    className="interactive-text"
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="label-game">SISTEMA INTEGRADO</div>
+                    <h2 className="section-title" style={{ textAlign: 'left' }}>Radar de <span>Proximidad</span></h2>
                     <p>
-                        Nuestro sistema de rastreo por proximidad convierte tu búsqueda en una experiencia intensa.
-                        Cuanto más te acercas al tesoro oculto, más "caliente" se vuelve tu dispositivo.
+                        Nuestra tecnología exclusiva de rastreo convierte tu ciudad en un desafío de precisión. 
+                        Siente el pulso de la búsqueda mientras tu dispositivo reacciona a los tesoros ocultos con señales tácticas en tiempo real.
                     </p>
-                    <div className="status-indicator">
-                        Estado Actual: <motion.span
-                            key={status}
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            className={status.toLowerCase()}
-                        >
-                            {getStatusDisplay(status)}
-                        </motion.span>
-                    </div>
-                </div>
-                <div className="interactive-visual">
-                    <div className="scanner-mockup glass">
-                        <motion.div
-                            className="scanner-glow"
-                            animate={{
-                                opacity: 0.2 + (proximity / 100) * 0.8,
-                                scale: 0.8 + (proximity / 100) * 0.5,
-                                background: proximity > 50
-                                    ? 'radial-gradient(circle, #FF4757 0%, transparent 70%)'
-                                    : 'radial-gradient(circle, #5CC7E7 0%, transparent 70%)'
-                            }}
-                        />
-                        <div className="scanner-center">
-                            <motion.div
-                                className="pulse"
-                                animate={{
-                                    borderColor: proximity > 50 ? '#FF4757' : '#5CC7E7',
-                                    scale: [1, 1.5],
-                                    opacity: [1, 0]
-                                }}
-                                transition={{ duration: 1, repeat: Infinity }}
-                            />
-                            <span>{proximity}%</span>
+
+                    <div className="status-panel glass">
+                        <div className="status-row">
+                            <span className="label">ESTADO DE SEÑAL:</span>
+                            <motion.span 
+                                key={status}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className={`value ${status.toLowerCase()}`}
+                            >
+                                {getStatusDisplay(status)}
+                            </motion.span>
                         </div>
-                        <div className="scanner-label">POTENCIA DE SEÑAL</div>
+                        <div className="status-row">
+                            <span className="label">PRECISIÓN GPS:</span>
+                            <span className="value">ALTA (0.5m)</span>
+                        </div>
+                        <div className="status-row">
+                            <span className="label">CARGA DE DATOS:</span>
+                            <span className="value">{proximity}%</span>
+                        </div>
+                        <div className="radar-progress-bar">
+                            <motion.div 
+                                className="radar-progress-fill"
+                                style={{ width: `${proximity}%`, backgroundColor: status === 'QUEMANDO' ? '#FF4757' : '#9b59b6' }}
+                            />
+                        </div>
+                    </div>
+                </motion.div>
+
+                <div className="interactive-visual">
+                    <div className="radar-system">
+                        <div className="radar-circles">
+                            <div className="radar-circle radar-circle-1"></div>
+                            <div className="radar-circle radar-circle-2"></div>
+                            <div className="radar-circle radar-circle-3"></div>
+                            <div className="radar-circle radar-circle-4"></div>
+                            <div className="radar-axis-x"></div>
+                            <div className="radar-axis-y"></div>
+                        </div>
+
+                        {/* Radar Sweep Animation */}
+                        <motion.div 
+                            className="radar-sweep"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                        />
+
+                        {/* Blip (The Treasure) */}
+                        <motion.div 
+                            className="radar-blip"
+                            style={{ 
+                                top: '35%', 
+                                left: '65%',
+                                opacity: proximity > 75 ? 1 : 0.2
+                            }}
+                            animate={{ 
+                                scale: [1, 1.5, 1],
+                                opacity: [0.3, 1, 0.3] 
+                            }}
+                            transition={{ duration: 1, repeat: Infinity }}
+                        />
+
+                        {/* Secondary Blips */}
+                        <div className="radar-blip-secondary" style={{ top: '20%', left: '20%', opacity: 0.1 }}></div>
+                        <div className="radar-blip-secondary" style={{ top: '70%', left: '40%', opacity: 0.1 }}></div>
                     </div>
                 </div>
             </div>

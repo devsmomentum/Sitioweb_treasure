@@ -87,6 +87,20 @@ const CharactersSection = () => {
                     <p>Elige tu avatar y domina las calles</p>
                 </motion.div>
 
+                {/* Full Team Banner */}
+                <motion.div
+                    className="team-banner-container"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    <img src="/personajes_equipo.jpg" alt="Equipo de Búsqueda" className="team-banner-image" />
+                    <div className="team-banner-overlay">
+                        <h3 className="team-banner-title">LA ÉLITE DE ARCADIA</h3>
+                    </div>
+                </motion.div>
+
                 <div className="characters-grid-container">
                     {/* Left side: Character Selection */}
                     <div className="characters-nav">

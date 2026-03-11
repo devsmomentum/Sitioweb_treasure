@@ -1,7 +1,7 @@
 .plans-section {
     padding: 100px 0;
     position: relative;
-    background: radial-gradient(circle at center, #1a1a2e 0%, #0a0e27 100%);
+    background: radial-gradient(circle at center, var(--surface-1) 0%, var(--surface-0) 100%);
 }
 
 .plans-header {
@@ -21,11 +21,11 @@
 }
 
 .plans-header h2 span {
-    background: linear-gradient(135deg, #a29bfe 0%, #ff7675 100%);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 10px rgba(162, 155, 254, 0.3));
+    filter: drop-shadow(0 0 10px rgba(155, 89, 182, 0.3));
 }
 
 .plans-header p {
@@ -102,7 +102,7 @@
 }
 
 .benefit-matrix tbody tr:hover {
-    background: rgba(162, 155, 254, 0.05);
+    background: rgba(155, 89, 182, 0.05);
 }
 
 .benefit-name {
