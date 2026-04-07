@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import './Leaderboard.css';
 
 const leaderboardData = [
@@ -44,44 +44,38 @@ const Confetti = ({ count = 50 }) => {
 
 const Leaderboard = () => {
     const [celebrate, setCelebrate] = useState(false);
-    const [inView, setInView] = useState(false);
     const containerRef = useRef(null);
 
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+    
+    // HOLOGRAPHIC ROCKSTAR TRANSFORMS
+    const bgY = useTransform(smoothScroll, [0, 1], ["-20%", "80%"]);
+    const bgY2 = useTransform(smoothScroll, [0, 1], ["20%", "-80%"]);
+    const tableRotateX = useTransform(smoothScroll, [0, 0.5, 1], [15, 0, -15]);
+    const tableScale = useTransform(smoothScroll, [0, 0.5, 1], [0.85, 1, 0.85]);
+    const headerTitleY = useTransform(smoothScroll, [0, 1], [0, -80]);
+
+    // Celebration logic simplified (will only trigger manually)
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setInView(entry.isIntersecting),
-            { threshold: 0.1 }
-        );
-        if (containerRef.current) observer.observe(containerRef.current);
-        return () => observer.disconnect();
+        // No auto-trigger anymore
     }, []);
 
-    useEffect(() => {
-        if (!inView) return;
-        
-        const interval = setInterval(() => {
-            setCelebrate(true);
-            setTimeout(() => setCelebrate(false), 3000);
-        }, 8000); 
-        return () => clearInterval(interval);
-    }, [inView]);
-
     return (
-        <section id="leaderboard" className={`leaderboard-section ${!inView ? 'paused-animations' : ''}`} ref={containerRef}>
+        <section id="leaderboard" className="leaderboard-section" ref={containerRef}>
             <AnimatePresence>
                 {celebrate && <Confetti />}
             </AnimatePresence>
 
             <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="leaderboard-header-main"
-                >
-                    <h2 className="section-title">Ranking Mundial</h2>
+                <div className="leaderboard-header-main">
+                    <h2 className="section-title">Ranking <span>Mundial</span></h2>
                     <p>Los mejores cazadores de la temporada</p>
-                </motion.div>
+                </div>
 
                 <div className="leaderboard-container glass">
                     <div className="leaderboard-header">
@@ -95,15 +89,15 @@ const Leaderboard = () => {
                         {leaderboardData.map((player, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                viewport={{ once: true }}
-                                whileHover={{ scale: 1.02, x: 10, backgroundColor: "rgba(255,255,255,0.05)" }}
+                                whileHover={{ 
+                                    scale: 1.02, 
+                                    backgroundColor: "rgba(255, 215, 0, 0.12)",
+                                    boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
+                                }}
                                 className={`leaderboard-row ${i < 3 ? `top-${i + 1}` : ''}`}
                             >
                                 <div className="player-rank">
-                                    {i === 0 ? <motion.span animate={{ rotate: [0, -10, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>👑</motion.span> : i + 1}
+                                    {i === 0 ? <span>👑</span> : i + 1}
                                 </div>
                                 <div className="player-info">
                                     <div className="avatar-frame" style={{ borderColor: player.color }}>
@@ -120,14 +114,15 @@ const Leaderboard = () => {
                             </motion.div>
                         ))}
                     </div>
+
                 </div>
 
                 <div className="ranking-footer">
-                    <button className="btn-celebrate" onClick={() => {
+                    <button className="btn-rockstar primary" onClick={() => {
                         setCelebrate(true);
                         setTimeout(() => setCelebrate(false), 3000);
                     }}>
-                        ¡Celebrar Victoria! 🎉
+                        ¡CELEBRAR VICTORIA! 🎉
                     </button>
                 </div>
             </div>

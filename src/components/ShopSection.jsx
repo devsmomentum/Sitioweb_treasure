@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import './ShopSection.css';
 
 const powerUps = [
@@ -16,17 +16,24 @@ const powerUps = [
 const ShopSection = () => {
     const [activeEffect, setActiveEffect] = useState(null);
     const [lastPurchase, setLastPurchase] = useState(null);
-    const [inView, setInView] = useState(false);
     const containerRef = useRef(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setInView(entry.isIntersecting),
-            { threshold: 0.1 }
-        );
-        if (containerRef.current) observer.observe(containerRef.current);
-        return () => observer.disconnect();
-    }, []);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+    // SHOP PARALLAX TRANSFORMS
+    const npcY = useTransform(smoothScroll, [0, 1], [0, 80]);
+    const headerY = useTransform(smoothScroll, [0, 1], [0, -60]);
+    
+    // Items parallax (3 speeds for variety)
+    const itemSpeedA = useTransform(smoothScroll, [0, 1], [50, -50]);
+    const itemSpeedB = useTransform(smoothScroll, [0, 1], [30, -30]);
+    const itemSpeedC = useTransform(smoothScroll, [0, 1], [70, -70]);
+    const itemSpeeds = [itemSpeedA, itemSpeedB, itemSpeedC, itemSpeedA, itemSpeedB, itemSpeedC, itemSpeedA, itemSpeedB];
 
     const handlePurchase = (id) => {
         setActiveEffect(id);
@@ -35,8 +42,8 @@ const ShopSection = () => {
     };
 
     return (
-        <section id="shop" className={`shop-section ${!inView ? 'paused-animations' : ''} ${activeEffect === 'freeze' ? 'frozen-ui' : ''} ${activeEffect === 'ghost' ? 'ghostly-ui' : ''} ${activeEffect === 'blackout' ? 'blackout-ui' : ''}`} ref={containerRef}>
-            {/* Efectos Globales... (Keep AnimatePresence code as is) */}
+        <section id="shop" className={`shop-section ${activeEffect === 'freeze' ? 'frozen-ui' : ''}`} ref={containerRef}>
+            {/* Global Effects (Keeping existing ones for visual impact) */}
             <AnimatePresence>
                 {activeEffect === 'blackout' && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.95 }} exit={{ opacity: 0 }} transition={{ duration: 1.5 }} className="effect-overlay blackout-effect" />
@@ -45,38 +52,22 @@ const ShopSection = () => {
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="effect-overlay blur-effect" />
                 )}
                 {activeEffect === 'freeze' && (
-                    <>
-                        <motion.div initial={{ opacity: 0, scale: 1.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="effect-overlay ice-crack-effect" />
-                        <div className="snow-container">
-                            {[...Array(40)].map((_, i) => (
-                                <motion.div key={i} className="snow-particle" initial={{ top: -20, left: `${Math.random() * 100}%`, opacity: 0 }} animate={{ top: '110%', opacity: [0, 1, 1, 0], x: [0, Math.random() * 60 - 30, 0] }} transition={{ duration: Math.random() * 1.5 + 1.5, repeat: Infinity, ease: "linear", delay: i * 0.05 }} />
-                            ))}
-                        </div>
-                    </>
+                    <motion.div initial={{ opacity: 0, scale: 1.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="effect-overlay ice-crack-effect" />
                 )}
                 {activeEffect === 'shield' && (
                     <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1.1, 1] }} className="effect-overlay shield-flash"><div className="shield-hex">🛡️</div></motion.div>
                 )}
-                {activeEffect === 'ghost' && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="effect-overlay ghost-mist" />}
-                {activeEffect === 'vampire' && (
-                    <div className="effect-overlay life-steal-effect">
-                        {[...Array(3)].map((_, i) => (
-                            <motion.div key={i} className="stolen-heart" initial={{ opacity: 0, scale: 0, y: 100 }} animate={{ opacity: [0, 1, 1, 0], scale: [0.5, 1.2, 1], y: -200, x: (i - 1) * 100 }} transition={{ duration: 1.5, delay: i * 0.2 }}>❤️</motion.div>
-                        ))}
-                    </div>
-                )}
-                {activeEffect === 'health' && <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 1] }} className="effect-overlay health-flash" />}
             </AnimatePresence>
 
             <div className="container">
-                <div className="shop-header">
+                <motion.div className="shop-header" style={{ y: headerY }}>
                     <div className="shop-badge">TIENDA LEGENDARIA</div>
                     <h2 className="section-title">El Bazar del <span>Alquimista</span></h2>
                     <p>Adquiere reliquias que alteran la realidad del juego</p>
-                </div>
+                </motion.div>
 
                 <div className="shop-layout">
-                    <div className="npc-container glass">
+                    <motion.div className="npc-container glass" style={{ y: npcY }}>
                         <motion.div
                             className="npc-avatar"
                             animate={activeEffect ? { scale: [1, 1.1, 1] } : { y: [0, -10, 0] }}
@@ -95,14 +86,15 @@ const ShopSection = () => {
                             <div className="stat-item"><span>Oro:</span> 2,450 💰</div>
                             <div className="stat-item"><span>Items:</span> 8/12 📦</div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     <div className="items-grid">
-                        {powerUps.map((p) => (
+                        {powerUps.map((p, i) => (
                             <motion.div
                                 key={p.id}
                                 className={`shop-item glass ${activeEffect === p.id ? 'active-buy' : ''} ${p.featured ? 'featured-item' : ''}`}
-                                whileHover={{ y: -10 }}
+                                style={{ y: itemSpeeds[i % itemSpeeds.length] }}
+                                whileHover={{ scale: 1.05, zIndex: 10 }}
                                 onClick={() => handlePurchase(p.id)}
                             >
                                 {p.featured && <div className="featured-tag">RECOMENDADO</div>}
@@ -124,12 +116,6 @@ const ShopSection = () => {
                                     <div className="item-price">{p.price} <span>💰</span></div>
                                     <button className="btn-buy">ADQUIRIR</button>
                                 </div>
-
-                                {lastPurchase === p.id && !activeEffect && (
-                                    <motion.div className="purchase-hint" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                                        ¡Adquirido!
-                                    </motion.div>
-                                )}
                             </motion.div>
                         ))}
                     </div>
@@ -138,6 +124,5 @@ const ShopSection = () => {
         </section>
     );
 };
-
 
 export default ShopSection;

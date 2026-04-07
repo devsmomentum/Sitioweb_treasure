@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import './Features.css';
 
 const features = [
@@ -35,22 +35,65 @@ const features = [
 
 const Features = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
+    const containerRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+    // DIFERENTIAL PARALLAX FOR CARDS
+    const titleY = useTransform(smoothScroll, [0, 1], [0, -50]);
+    const cardY1 = useTransform(smoothScroll, [0, 1], [80, -80]);
+    const cardY2 = useTransform(smoothScroll, [0, 1], [140, -140]);
+    const cardY3 = useTransform(smoothScroll, [0, 1], [60, -60]);
+    const cardY4 = useTransform(smoothScroll, [0, 1], [110, -110]);
+    
+    const cardsY = [cardY1, cardY2, cardY3, cardY4];
+
+    const decY1 = useTransform(smoothScroll, [0, 1], ["0%", "80%"]);
+    const decY2 = useTransform(smoothScroll, [0, 1], ["0%", "-80%"]);
+    const decRotate = useTransform(smoothScroll, [0, 1], [0, 120]);
 
     return (
-        <section id="features" className="features">
+        <section id="features" className="features" ref={containerRef}>
+            {/* Background Parallax Decorations */}
+            <div className="features-decorations">
+                <motion.div className="f-dec dec-1" style={{ y: decY1, rotate: decRotate }}>🧭</motion.div>
+                <motion.div className="f-dec dec-2" style={{ y: decY2, rotate: -decRotate }}>🗺️</motion.div>
+                <motion.div className="f-dec dec-3" style={{ y: decY1, rotate: decRotate * 0.5 }}>📱</motion.div>
+                <motion.div className="f-dec dec-4" style={{ y: decY2, rotate: -decRotate * 0.8 }}>💎</motion.div>
+            </div>
+
             <div className="container">
-                <h2 className="section-title">Domina la Búsqueda</h2>
+                <motion.h2 className="section-title" style={{ y: titleY }}>Domina la Búsqueda</motion.h2>
                 <div className="features-grid">
                     {features.map((f, i) => (
                         <motion.div
                             key={i}
-                            className="feature-card glass animate-fade-in"
-                            style={{ animationDelay: `${0.1 * i}s` }}
+                            className="feature-card glass"
+                            style={{ 
+                                y: cardsY[i],
+                                transition: { delay: i * 0.1 },
+                                transformStyle: "preserve-3d"
+                            }}
                             onHoverStart={() => setHoveredCard(f.id)}
                             onHoverEnd={() => setHoveredCard(null)}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ 
+                                scale: 1.05, 
+                                zIndex: 20,
+                                rotateX: 10,
+                                rotateY: -10,
+                                boxShadow: "0 20px 60px rgba(0,0,0,0.5)" 
+                            }}
                         >
-                            <div className="feature-icon" style={{ backgroundColor: `${f.color}22`, color: f.color }}>
+                            <div className="feature-icon" style={{ 
+                                backgroundColor: `${f.color}22`, 
+                                color: f.color,
+                                transform: "translateZ(40px)"
+                            }}>
                                 <motion.div
                                     animate={hoveredCard === f.id ? {
                                         y: f.id === 'exploration' ? [-5, 5, -5] : 0,
@@ -68,11 +111,13 @@ const Features = () => {
                                     <img
                                         src={f.icon}
                                         alt={f.title}
+                                        loading="lazy"
+                                        decoding="async"
                                         className={`feature-icon-img ${f.id === 'qr' ? 'camera-icon' : ''} ${f.id === 'ranking' ? 'trophy-icon' : ''}`}
                                     />
                                 </motion.div>
-
-                                {/* Camera Flash Effect */}
+                                
+                                {/* Effects like Flash, Glow, Confetti are kept same... */}
                                 <AnimatePresence>
                                     {hoveredCard === 'qr' && f.id === 'qr' && (
                                         <motion.div
@@ -85,7 +130,6 @@ const Features = () => {
                                     )}
                                 </AnimatePresence>
 
-                                {/* Fire Glow Effect */}
                                 <AnimatePresence>
                                     {hoveredCard === 'tracking' && f.id === 'tracking' && (
                                         <motion.div
@@ -101,7 +145,6 @@ const Features = () => {
                                     )}
                                 </AnimatePresence>
 
-                                {/* Confetti Effect */}
                                 <AnimatePresence>
                                     {hoveredCard === 'ranking' && f.id === 'ranking' && (
                                         <div className="confetti-container">
@@ -132,9 +175,10 @@ const Features = () => {
                                     )}
                                 </AnimatePresence>
                             </div>
-                            <h3>{f.title}</h3>
-                            <p>{f.description}</p>
+                            <h3 style={{ transform: "translateZ(20px)" }}>{f.title}</h3>
+                            <p style={{ transform: "translateZ(10px)" }}>{f.description}</p>
                         </motion.div>
+
                     ))}
                 </div>
             </div>

@@ -1,0 +1,150 @@
+.rockstar-master-container {
+    position: relative;
+    height: 500vh; /* Reduced height for faster, snappier scroll transitions */
+    background: #000;
+}
+
+
+.rockstar-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rock-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    will-change: transform, opacity;
+}
+
+.rock-content {
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+}
+
+.rock-logo-img {
+    max-width: 450px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
+}
+
+.rock-tagline {
+    font-size: 1rem;
+    letter-spacing: 12px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+
+.rock-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 950;
+    color: #fff;
+    line-height: 0.9;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    text-shadow: 0 0 40px rgba(0,0,0,0.9);
+}
+
+.rock-label {
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    font-weight: 800;
+    color: #fff;
+    opacity: 0.7;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.rock-desc {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 20px;
+}
+
+.rock-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: radial-gradient(circle at 50% 50%, 
+        transparent 10%, 
+        rgba(0,0,0,0.4) 60%, 
+        #000 100%),
+        linear-gradient(to top, #000 0%, transparent 15%, transparent 85%, #000 100%);
+    pointer-events: none;
+}
+
+.btn-rockstar {
+    display: inline-block;
+    background: #f8dc05; /* Amarillo Rockstar */
+    color: #000;
+    padding: 18px 50px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.2s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+}
+
+.btn-rockstar:hover {
+    background: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(248, 220, 5, 0.4);
+}
+
+.btn-rockstar.primary {
+    background: #f8dc05;
+}
+
+.btn-rockstar.large {
+    margin-top: 40px;
+    padding: 22px 70px;
+    font-size: 1.2rem;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .btn-rockstar {
+        padding: 15px 35px;
+        font-size: 0.9rem;
+    }
+    
+    .rock-title {
+        font-size: 3rem;
+        letter-spacing: -1px;
+    }
+    
+    .rock-logo-img {
+        max-width: 250px;
+    }
+    
+    .rock-tagline {
+        letter-spacing: 6px;
+        font-size: 0.8rem;
+    }
+    
+    .rock-desc {
+        font-size: 1rem;
+    }
+}

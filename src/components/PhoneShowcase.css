@@ -1,7 +1,6 @@
 .phone-showcase-section {
     position: relative;
-    min-height: 100vh;
-    padding: 120px 0;
+    padding: 100px 0;
     overflow: hidden;
     perspective: 1200px;
     background: linear-gradient(180deg, 
@@ -32,17 +31,24 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 80px;
+    gap: 40px;
     position: relative;
     z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
 }
+
 
 /* Text Side */
 .phone-text-side {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    position: relative;
+    z-index: 10; /* Ensure text is above any potential device overlap */
+    max-width: 550px;
 }
+
 
 .phone-section-label {
     font-size: 0.85rem;
@@ -54,7 +60,7 @@
 }
 
 .phone-section-title {
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: clamp(1.6rem, 5vw, 3.2rem);
     font-weight: 900;
     color: white;
     line-height: 1.1;
@@ -151,30 +157,31 @@
     box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
 }
 
-/* 3D Phone */
-.phone-3d-wrapper {
-    position: relative;
+/* 3D Device Morphing */
+.device-interactive-zone {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Back to centered */
     align-items: center;
-    transform-style: preserve-3d;
+    min-height: 650px;
+    width: 100%;
 }
 
-.phone-glow {
-    position: absolute;
-    width: 300px;
-    height: 500px;
-    background: radial-gradient(ellipse, rgba(155, 89, 182, 0.25) 0%, rgba(255, 215, 0, 0.1) 40%, transparent 70%);
-    filter: blur(40px);
-    z-index: -1;
+.phone-3d-outer {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+.device-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+    background: #000;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
 }
 
 .phone-frame {
     position: relative;
-    width: 280px;
-    height: 560px;
     background: linear-gradient(145deg, #1a1a2e, #0f0f1f);
-    border-radius: 40px;
     border: 3px solid rgba(155, 89, 182, 0.3);
     box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.5),
@@ -185,6 +192,7 @@
     flex-direction: column;
     align-items: center;
     padding: 12px;
+    transition: border-radius 0.4s ease, width 0.4s ease, height 0.4s ease;
 }
 
 .phone-notch {
@@ -202,7 +210,7 @@
 .phone-screen {
     width: 100%;
     height: 100%;
-    border-radius: 30px;
+    border-radius: inherit;
     overflow: hidden;
     background: linear-gradient(180deg, #0f1035, #1a1040);
     position: relative;
@@ -212,7 +220,25 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 28px;
+}
+
+.phone-reflection {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 200%;
+    height: 300%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 45%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 55%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+    transform: rotate(25deg);
 }
 
 .phone-home-bar {
@@ -227,78 +253,149 @@
     z-index: 5;
 }
 
-/* Floating game elements */
+/* Laptop Specifics */
+
+.laptop-base {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 105%;
+    height: 100%;
+    background: linear-gradient(180deg, #1a1a2e, #0a0a1a);
+    border-radius: 10px 10px 20px 20px;
+    border: 2px solid rgba(155, 89, 182, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+
+.laptop-keyboard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background-image: 
+        radial-gradient(rgba(155, 89, 182, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.trackpad {
+    width: 150px;
+    height: 100px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.keys {
+    flex-grow: 1;
+    width: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 40px,
+        transparent 40px,
+        transparent 50px
+    );
+    opacity: 0.5;
+}
+
+.device-hint {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    animation: bounce 2s infinite;
+    white-space: nowrap;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
+}
+
+/* Floating game elements Z-Stacking */
 .floating-game-element {
     position: absolute;
-    font-size: 2rem;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
-    z-index: 10;
-}
-
-.el-1 {
-    top: 5%;
-    right: -15%;
-}
-
-.el-2 {
-    bottom: 10%;
-    right: -20%;
-}
-
-.el-3 {
-    top: 15%;
-    left: -15%;
-}
-
-.el-4 {
-    bottom: 20%;
-    left: -10%;
+    font-size: 3rem;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    z-index: 50;
+    pointer-events: none;
 }
 
 /* Responsive */
 @media (max-width: 968px) {
+    .device-interactive-zone {
+        min-height: 420px;
+        order: -1;
+        margin-bottom: 60px;
+    }
+    
+    .laptop-base {
+        display: none; /* Hide laptop 3d on mobile for performance */
+    }
+
     .phone-showcase-container {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 20px;
         text-align: center;
     }
 
     .phone-text-side {
         align-items: center;
+        margin: 0 auto;
     }
 
-    .phone-section-desc {
-        max-width: 100%;
+    .phone-step {
+        text-align: left;
     }
 
-    .btn-phone-cta {
-        align-self: center;
-    }
-
-    .phone-frame {
-        width: 240px;
-        height: 480px;
-    }
-
-    .phone-3d-wrapper {
-        order: -1;
+    .phone-text-side .btn-rockstar {
+        margin: 10px auto 0 auto;
+        display: block;
     }
 }
 
+
 @media (max-width: 480px) {
     .phone-showcase-section {
-        padding: 80px 0;
+        padding: 60px 0;
+    }
+
+    .device-interactive-zone {
+        min-height: 380px;
     }
 
     .phone-frame {
-        width: 200px;
-        height: 400px;
+        width: 170px;
+        height: 340px;
+    }
+
+    .device-hint {
+        bottom: -40px;
+        font-size: 0.7rem;
     }
 
     .floating-game-element {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
-    .el-1, .el-2 { right: -5%; }
-    .el-3, .el-4 { left: -5%; }
+    .el-1 { top: 10%; right: -15%; }
+    .el-2 { bottom: 15%; right: -20%; }
+    .el-3 { top: 20%; left: -20%; }
+    .el-4 { bottom: 10%; left: -15%; }
 }

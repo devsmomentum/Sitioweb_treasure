@@ -1,16 +1,33 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import './CharactersVideo.css';
 
 const CharactersVideo = () => {
+    const containerRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+    
+    // Rockstar Parallax
+    const bgScale = useTransform(smoothScroll, [0, 1], [1, 1.3]);
+    const bgY = useTransform(smoothScroll, [0, 1], ["0%", "5%"]);
+    const contentY = useTransform(smoothScroll, [0, 1], [100, -100]);
+    const contentOpacity = useTransform(smoothScroll, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
     return (
-        <section className="characters-video-section">
-            {/* Fondo Fijo que llena todo el espacio */}
-            <div 
+        <section className="characters-video-section" ref={containerRef}>
+            {/* Background Parallax Layer */}
+            <motion.div 
                 className="characters-full-bg"
                 style={{ 
                     backgroundImage: "url('/personajes_equipo.jpg')",
-                    backgroundSize: '110%', /* Upscale slightly to crop out the watermark at the edges */
+                    scale: bgScale,
+                    y: bgY,
+                    backgroundSize: 'cover',
                     backgroundPosition: 'center 85%', 
                     position: 'absolute',
                     inset: 0,
@@ -18,27 +35,22 @@ const CharactersVideo = () => {
                 }}
             />
 
-            {/* Overlay para suavizar bordes y mejorar contraste */}
+            {/* Cinematic Overlay */}
             <div className="characters-video-vignette"></div>
 
-            {/* Contenido centrado o a la izquierda */}
-            <div className="characters-video-content">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
+            {/* Parallax Content */}
+            <motion.div 
+                className="characters-video-content"
+                style={{ y: contentY, opacity: contentOpacity }}
+            >
+                <div>
                     <div className="characters-video-label">ELENCO DE HÉROES</div>
-                    <h2 className="characters-video-title">PERSONAJES <span>LEYENDARIOS</span></h2>
+                    <h2 className="characters-video-title">PERSONAJES <span>LEGENDARIOS</span></h2>
                     <p className="characters-video-desc">
                         Cada cazador tiene habilidades únicas. Prepárate para la aventura con el mejor equipo.
                     </p>
-                    <div className="characters-video-cta">
-                        <button className="btn-characters-video">Conoce a tu Equipo</button>
-                    </div>
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
         </section>
     );
 };

@@ -6,6 +6,29 @@
     overflow: hidden;
 }
 
+.leaderboard-decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.l-dec {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.12;
+    filter: blur(1px);
+}
+
+.ld-1 { top: 15%; left: 8%; }
+.ld-2 { top: 70%; right: 10%; }
+.ld-3 { top: 45%; right: 5%; }
+
+.leaderboard-section .container {
+    position: relative;
+    z-index: 2;
+}
+
 .leaderboard-header-main {
     text-align: center;
     margin-bottom: var(--space-3xl);

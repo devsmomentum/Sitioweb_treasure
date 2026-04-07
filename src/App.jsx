@@ -1,18 +1,22 @@
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import ActionHero from './components/ActionHero';
-import PhoneShowcase from './components/PhoneShowcase';
-import InteractiveSection from './components/InteractiveSection';
-import CharactersVideo from './components/CharactersVideo';
-import Leaderboard from './components/Leaderboard';
-import ShopSection from './components/ShopSection';
-import PlansSection from './components/PlansSection';
-import TrailerSection from './components/TrailerSection';
+import RockstarExperience from './components/RockstarExperience'; // Unificación Total
 import Starfield from './components/Starfield';
-import Footer from './components/Footer';
 import { Analytics } from "@vercel/analytics/react";
 import './App.css';
+
+// Lazy load components below the fold
+const Features = lazy(() => import('./components/Features'));
+const PhoneShowcase = lazy(() => import('./components/PhoneShowcase'));
+const InteractiveSection = lazy(() => import('./components/InteractiveSection'));
+const CharactersVideo = lazy(() => import('./components/CharactersVideo'));
+const Leaderboard = lazy(() => import('./components/Leaderboard'));
+const ShopSection = lazy(() => import('./components/ShopSection'));
+const TrailerSection = lazy(() => import('./components/TrailerSection'));
+const PlansSection = lazy(() => import('./components/PlansSection'));
+const Footer = lazy(() => import('./components/Footer'));
+
+const LoadingFallback = () => <div style={{ height: '200px', background: 'transparent' }} />;
 
 function App() {
   return (
@@ -20,21 +24,24 @@ function App() {
       <Starfield />
       <Navbar />
       <main style={{ position: 'relative', zIndex: 2 }}>
-        <Hero />
-        <ActionHero />
-        <Features />
-        <PhoneShowcase />
-        <InteractiveSection />
-        <CharactersVideo />
-        <Leaderboard />
-        <ShopSection />
-        <TrailerSection />
-        <PlansSection />
+        <RockstarExperience /> {/* Hero + Eventos + Aventura Conectados */}
+        
+        <Suspense fallback={<LoadingFallback />}>
+          <Features />
+          <PhoneShowcase />
+          <InteractiveSection />
+          <CharactersVideo />
+          <Leaderboard />
+          <ShopSection />
+          <TrailerSection />
+          <PlansSection />
+          <Footer />
+        </Suspense>
       </main>
-      <Footer />
       <Analytics />
     </div>
   );
 }
 
 export default App;
+

@@ -232,3 +232,41 @@ a:hover {
 .floating {
   animation: float 4s ease-in-out infinite;
 }
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* GPU Acceleration for animated layers */
+.rock-layer, 
+.feature-card, 
+.cartridge-card, 
+.phone-3d-outer,
+.device-wrapper,
+.floating-game-element,
+.hero-video-bg {
+    will-change: transform, opacity;
+}
+
+/* Content rendering optimization */
+img, video {
+    content-visibility: auto;
+}
+
+/* Optimize Backdrop Filters */
+.glass {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0); /* Force layer creation */
+}
+
+/* Reduced animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}

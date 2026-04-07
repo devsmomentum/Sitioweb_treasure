@@ -83,7 +83,7 @@ const CharactersSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="section-title">EQUIPO DE <span>BÚSQUEDA</span></h2>
+                    <h2 className="section-title">PERSONAJES <span>LEGENDARIOS</span></h2>
                     <p>Elige tu avatar y domina las calles</p>
                 </motion.div>
 
