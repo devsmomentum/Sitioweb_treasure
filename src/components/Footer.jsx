@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-content">
                     <div className="footer-logo">
-                        <img src="/logo-maphunter.png" alt="MapHunter" className="footer-logo-img" />
+                        <img src="/logo.svg" alt="MapHunter" className="footer-logo-img" />
                         MapHunter
                     </div>
                     <div className="footer-links">

@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isHidden ? 'navbar-hidden' : ''}`}>
       <div className="navbar-container container">
         <div className="logo-container">
-          <img src="/logo-maphunter.png" alt="MapHunter" className="logo-img" />
+          <img src="/logo.svg" alt="MapHunter" className="logo-img" />
           <span className="logo-text">MapHunter</span>
         </div>
 
