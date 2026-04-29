@@ -25,7 +25,7 @@ const Footer = () => {
                         </div>
                         <div className="link-group">
                             <h4>Legal</h4>
-                            <a href="/Terminos_y_Condiciones_Maphunter.pdf" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a>
+                            <a href="/legal/index.html" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,6 @@ const Footer = () => {
                             <p className="developed-by">Desarrollado por:</p>
                             <div className="partner-logos">
                                 <img src="https://morna.tech/wp-content/uploads/2024/05/Recurso-3@2x.png" alt="Morna Tech" className="partner-logo" />
-                                <img src="/gana_con_naza_logo.png" alt="Gana con Naza" className="partner-logo" />
                                 <img src="/jd_naza_logo.png" alt="JD Naza" className="partner-logo" />
                             </div>
                         </div>
