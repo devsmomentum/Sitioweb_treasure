@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidad - Maphunter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml">
+</head>
+
+<body>
+    <!-- Background Glow Effects -->
+    <div class="bg-glow">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <img src="/logo-maphunter.png" alt="Maphunter Logo" class="logo">
+                <span class="brand-name">MAPHUNTER</span>
+            </div>
+            <div class="header-badge">Centro de Privacidad</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>POLÍTICAS DE PRIVACIDAD</h1>
+            <p class="hero-subtitle">En Maphunter nos tomamos en serio tu privacidad. Descubre cómo protegemos,
+                procesamos y resguardamos tus datos mientras vives la experiencia del juego.</p>
+            <p class="last-update">Última actualización: Febrero 2026</p>
+        </div>
+    </section>
+
+    <!-- Search & Filter Bar -->
+    <section class="interactive-controls">
+        <div class="search-container">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="policySearch"
+                placeholder="Buscar en las políticas (ej. Geocalización, Menores, KYC)..." onkeyup="filterPolicies()">
+            <button id="clearSearch" onclick="clearSearchFilter()" style="display: none;">&times;</button>
+        </div>
+        <div class="quick-tags">
+            <span class="tag-label">Temas populares:</span>
+            <button class="tag-btn" onclick="setSearch('Geolocalización')">Geolocalización</button>
+            <button class="tag-btn" onclick="setSearch('Menores')">Menores</button>
+            <button class="tag-btn" onclick="setSearch('KYC')">Verificación KYC</button>
+            <button class="tag-btn" onclick="setSearch('Derechos')">Derechos ARCO</button>
+        </div>
+    </section>
+
+    <!-- Main Container Layout -->
+    <div class="layout-container">
+        <!-- Sticky Left Sidebar (Table of Contents) -->
+        <aside class="sidebar-toc">
+            <div class="toc-card">
+                <h3>Índice de Políticas</h3>
+                <nav class="toc-nav" id="tocNav">
+                    <a href="#preambulo" class="toc-link active">Preámbulo y Compromiso</a>
+                    <a href="#datos" class="toc-link">1. Datos Recopilados</a>
+                    <a href="#finalidad" class="toc-link">2. Finalidad del Tratamiento</a>
+                    <a href="#comparticion" class="toc-link">3. Compartición de Datos</a>
+                    <a href="#seguridad" class="toc-link">4. Seguridad y Protección</a>
+                    <a href="#derechos" class="toc-link">5. Derechos del Titular</a>
+                    <a href="#retencion" class="toc-link">6. Retención de Información</a>
+                    <a href="#menores" class="toc-link">7. Datos de Menores de Edad</a>
+                    <a href="#cookies" class="toc-link">8. Cookies y Tecnologías</a>
+                    <a href="#contacto" class="toc-link">9. Consultas y Contacto</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="policy-content">
+            <!-- No results message -->
+            <div id="noResults" class="no-results-card" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="no-results-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3>No se encontraron resultados</h3>
+                <p>Intenta con otras palabras clave como "correo", "ubicación", "billetera" o "seguridad".</p>
+                <button class="action-btn" onclick="clearSearchFilter()">Restablecer búsqueda</button>
+            </div>
+
+            <!-- Preámbulo -->
+            <section id="preambulo" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper purple-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h2>Preámbulo y Compromiso de Privacidad</h2>
+                    <div class="card-body">
+                        <p>Los creadores y titulares de <strong>Maphunter</strong> asumen un compromiso
+                            inquebrantable con el respeto y la confidencialidad de tus datos personales. Al registrarte
+                            y participar en nuestra plataforma móvil o experiencias de juego en el mundo físico, aceptas
+                            que procesemos tus datos personales bajo los términos detallados en esta Política.</p>
+                        <p>Nuestro principal propósito al gestionar esta información es posibilitar una experiencia
+                            lúdica inmersiva y justa para todos los participantes, garantizando la equidad de las
+                            dinámicas y la transparencia en la adjudicación de premios.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1. Datos Recopilados -->
+            <section id="datos" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper neon-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                        </svg>
+                    </div>
+                    <h2>1. ¿Qué datos personales recopilamos?</h2>
+                    <div class="card-body">
+                        <p>Maphunter procesa únicamente la información estrictamente necesaria para registrar tu perfil,
+                            auditar el juego y prevenir fraudes. Recopilamos las siguientes categorías de datos:</p>
+
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-title">Datos de Registro General</div>
+                                <p>Nombre completo, dirección de correo electrónico, número telefónico, fecha de
+                                    nacimiento y país de residencia habitual.</p>
+                            </div>
+                            <div class="info-item highlight-item">
+                                <div class="info-title">Geolocalización en Tiempo Real</div>
+                                <p><strong>Crítico para el Juego:</strong> Capturamos tu ubicación GPS de forma activa
+                                    <em>únicamente</em> cuando participas de manera activa en un Evento. Se utiliza para
+                                    validar la resolución de pistas físicas y cercanía a los objetivos del mapa. No
+                                    rastreamos en segundo plano fuera del juego.
+                                </p>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-title">Datos de Verificación (KYC)</div>
+                                <p>Para el retiro seguro de fondos y premios monetarios, requerimos una foto de tu
+                                    documento oficial de identidad (cédula, pasaporte o DNI) para prevenir el lavado de
+                                    dinero y la suplantación de identidad.</p>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-title">Datos Técnicos del Dispositivo</div>
+                                <p>Modelo de dispositivo móvil, versión de sistema operativo, identificadores únicos
+                                    (como IMEI o ID de dispositivo), dirección IP y datos de red.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Finalidad del Tratamiento -->
+            <section id="finalidad" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper gold-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                    </div>
+                    <h2>2. ¿Para qué fines utilizamos tus datos?</h2>
+                    <div class="card-body">
+                        <p>Los datos que recopilamos se tratan con base en las siguientes finalidades operativas y de
+                            seguridad:</p>
+                        <ul class="styled-list">
+                            <li><strong>Gestión y Mantenimiento de Cuenta:</strong> Creación de perfiles, almacenamiento
+                                de historial de partidas y control de tu Billetera Virtual interna.</li>
+                            <li><strong>Garantía de Integridad (Anti-Trampas):</strong> Auditoría activa de datos de
+                                ubicación GPS para detectar manipulación maliciosa de posición (GPS Spoofing), bots o
+                                scripts que alteren la competencia.</li>
+                            <li><strong>Procesamiento de Pagos y Premios:</strong> Canalización de las entry fees
+                                (inscripciones) y retiros de botín mediante pasarelas aliadas, validando el titular a
+                                través del proceso KYC.</li>
+                            <li><strong>Comunicaciones Esenciales:</strong> Notificaciones del estado de eventos,
+                                anuncios de seguridad, cambios en los términos, soporte y atención a incidencias.</li>
+                            <li><strong>Cumplimiento Normativo:</strong> Cooperación con autoridades legales ante
+                                requerimientos formales y auditorías de transacciones financieras.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Compartición de Datos -->
+            <section id="comparticion" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper pink-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.684 10.742L19.9 5.855M8.684 13.258l11.217 4.887M9.75 12a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                        </svg>
+                    </div>
+                    <h2>3. ¿Con quién compartimos tu información?</h2>
+                    <div class="card-body">
+                        <p><strong>Maphunter aplica una política estricta: NO vendemos, alquilamos ni comercializamos
+                                tus datos personales con terceros para fines publicitarios.</strong></p>
+                        <p>Únicamente transmitimos datos en los siguientes escenarios indispensables:</p>
+                        <div class="callout-box">
+                            <p><strong>1. Proveedores de Pago Aliados:</strong> Tu información transaccional es
+                                transmitida de forma cifrada a pasarelas como Stripe, PayPal o intermediarios de
+                                criptoactivos (Binance Pay) para procesar transacciones bancarias o Pago Móvil.</p>
+                            <p><strong>2. Infraestructura Tecnológica:</strong> Alojamos tu información en servidores en
+                                la nube seguros (AWS, Google Cloud) bajo rigurosos acuerdos de confidencialidad técnica.
+                            </p>
+                            <p><strong>3. Obligaciones Legales:</strong> Compartiremos datos con cuerpos de seguridad
+                                del Estado u organismos judiciales competentes únicamente si media una orden judicial
+                                escrita y debidamente fundamentada bajo la legislación aplicable.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Seguridad de los Datos -->
+            <section id="seguridad" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper purple-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h2>4. Medidas de Seguridad e Integridad</h2>
+                    <div class="card-body">
+                        <p>Para resguardar tu información de accesos no autorizados, pérdidas accidentales o
+                            alteraciones maliciosas, implementamos un conjunto robusto de salvaguardas tecnológicas y
+                            administrativas:</p>
+                        <div class="security-features">
+                            <div class="sec-feature">
+                                <div class="feature-title">Cifrado de Extremo a Extremo</div>
+                                <p>Toda comunicación entre la aplicación móvil, el servidor y las pasarelas de pago se
+                                    realiza utilizando protocolos TLS / HTTPS de alta seguridad.</p>
+                            </div>
+                            <div class="sec-feature">
+                                <div class="feature-title">Almacenamiento Seguro KYC</div>
+                                <p>Las imágenes de documentos de identidad recolectadas para verificación se almacenan
+                                    en buckets aislados y encriptados en reposo, con acceso estrictamente restringido al
+                                    equipo de cumplimiento.</p>
+                            </div>
+                            <div class="sec-feature">
+                                <div class="feature-title">Auditorías Anti-Intrusión</div>
+                                <p>Llevamos a cabo revisiones frecuentes de código e infraestructura para detectar
+                                    posibles brechas o vulnerabilidades en nuestros sistemas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Derechos ARCO -->
+            <section id="derechos" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper neon-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <h2>5. Tus Derechos como Usuario (Derechos ARCO)</h2>
+                    <div class="card-body">
+                        <p>De conformidad con las leyes vigentes de protección de datos personales, posees un control
+                            pleno sobre tu información. Tienes derecho a ejercer tus derechos de:</p>
+
+                        <div class="arco-cards">
+                            <div class="arco-card">
+                                <strong>Acceso</strong>
+                                <p>Solicitar un informe detallado sobre qué datos personales conservamos asociados a tu
+                                    cuenta.</p>
+                            </div>
+                            <div class="arco-card">
+                                <strong>Rectificación</strong>
+                                <p>Solicitar la corrección de datos inexactos, desactualizados o incompletos en tu
+                                    perfil.</p>
+                            </div>
+                            <div class="arco-card">
+                                <strong>Cancelación</strong>
+                                <p>Exigir la eliminación definitiva de tu cuenta y todos los datos asociados de nuestras
+                                    bases operativas.</p>
+                            </div>
+                            <div class="arco-card">
+                                <strong>Oposición</strong>
+                                <p>Negarte al tratamiento de tus datos para fines secundarios específicos, como campañas
+                                    de marketing.</p>
+                            </div>
+                        </div>
+
+                        <p class="arco-footer">Para ejercer cualquiera de estos derechos, simplemente envía una
+                            solicitud formal firmada adjuntando copia de tu identificación al correo electrónico de
+                            nuestro equipo de privacidad: <a href="mailto:soporte@maphunter.online"
+                                class="link-hover">soporte@maphunter.online</a>. Atenderemos tu caso en un plazo no
+                            mayor a quince (15) días hábiles.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Retención de Datos -->
+            <section id="retencion" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper gold-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h2>6. Tiempos de Retención de la Información</h2>
+                    <div class="card-body">
+                        <p>No conservamos tus datos más tiempo del necesario para cumplir los fines descritos en esta
+                            política:</p>
+                        <ul class="styled-list">
+                            <li><strong>Datos de Cuenta Activa:</strong> Se mantienen en bases de datos operativas
+                                mientras continúes registrado en la aplicación móvil de Maphunter.</li>
+                            <li><strong>Periodo de Salvaguarda Legal:</strong> Tras solicitar la eliminación de tu
+                                cuenta, mantendremos ciertos datos agregados e información de transacciones financieras
+                                de forma inactiva y bloqueada por un periodo de hasta <strong>cinco (5) años</strong>,
+                                para responder exclusivamente ante posibles auditorías fiscales, disputas de cobro o
+                                requerimientos de autoridades judiciales.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Protección de Menores -->
+            <section id="menores" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper pink-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h2>7. Normativa Especial para Menores de Edad</h2>
+                    <div class="card-body">
+                        <p>Maphunter está diseñado e ideado principalmente para personas mayores de 18 años. No
+                            obstante, en aquellos escenarios y eventos calificados como aptos para menores de edad,
+                            establecemos medidas de privacidad sumamente estrictas:</p>
+                        <div class="parental-notice">
+                            <div class="notice-badge">CONTROL PARENTAL</div>
+                            <p><strong>1. Autorización Parental Obligatoria:</strong> Un menor de edad no puede crear
+                                una cuenta de forma autónoma. El padre, madre o tutor legal debe firmar una planilla
+                                física o digital consintiendo expresamente la recolección de los datos mínimos del
+                                menor.</p>
+                            <p><strong>2. Plazo de Retención Abreviado:</strong> Para máxima seguridad, todos los datos
+                                personales, métricas de juego y geolocalización de participantes menores de edad se
+                                eliminan de forma absoluta y permanente en un plazo máximo de <strong>treinta (30)
+                                    días</strong> tras haber culminado el evento correspondiente.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. Cookies y Tecnologías de Seguimiento -->
+            <section id="cookies" class="policy-section">
+                <div class="section-card">
+                    <div class="card-icon-wrapper purple-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h2>8. Cookies y Almacenamiento Local</h2>
+                    <div class="card-body">
+                        <p>Tanto nuestro sitio web como la aplicación móvil hacen uso de tecnologías estándar de
+                            almacenamiento (cookies, tokens JWT de sesión, y almacenamiento local) con los siguientes
+                            fines:</p>
+                        <ul class="styled-list">
+                            <li><strong>Cookies Técnicas Esenciales:</strong> Necesarias para mantener tu sesión activa,
+                                recordar tus credenciales cifradas y asegurar que no tengas que loguearte repetidamente
+                                durante un juego.</li>
+                            <li><strong>Optimización de Posicionamiento:</strong> Guardar en caché mapas y
+                                localizaciones frecuentes para reducir el consumo de tu plan de datos móviles y acelerar
+                                la carga de pistas en el mundo real.</li>
+                        </ul>
+                        <p>Puedes desactivar el uso de cookies y almacenamiento local desde la configuración de tu
+                            navegador o sistema operativo móvil; no obstante, ten en cuenta que ello inhabilitará por
+                            completo el acceso a tu cuenta de juego y la geolocalización necesaria para participar.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. Contacto y Consultas -->
+            <section id="contacto" class="policy-section">
+                <div class="section-card interactive-form-card">
+                    <div class="card-icon-wrapper neon-glow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    </div>
+                    <h2>9. Consultas sobre Privacidad</h2>
+                    <div class="card-body">
+                        <p>Si tienes cualquier duda, sugerencia o comentario referente a la recopilación, almacenamiento
+                            o resguardo de tu información personal, no dudes en ponerte en contacto directo con nuestro
+                            equipo:</p>
+
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="detail-label">Responsable del Tratamiento:</span>
+                                <span class="detail-val">Equipo Oficial de Operaciones Maphunter</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="detail-label">Correo Electrónico Oficial:</span>
+                                <span class="detail-val"><a
+                                        href="mailto:soporte@maphunter.online">soporte@maphunter.online</a></span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="detail-label">Sede Operativa y Domicilio:</span>
+                                <span class="detail-val">Caracas, Distrito Capital, República Bolivariana de
+                                    Venezuela</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="/logo-maphunter.png" alt="Maphunter Logo" class="footer-logo">
+                <div>
+                    <h4>MAPHUNTER</h4>
+                    <p>La experiencia lúdica definitiva de exploración urbana real.</p>
+                </div>
+            </div>
+            <div class="footer-legal-links">
+                <a href="/legal/index.html" class="footer-link">Términos y Condiciones</a>
+                <a href="/legal/anexo.html" class="footer-link">Anexo Financiero</a>
+                <a href="#preambulo" class="footer-link active">Políticas de Privacidad</a>
+            </div>
+        </div>
+        <div class="footer-credits">
+            <p>&copy; 2026 Maphunter. Todos los derechos reservados.</p>
+            <p>Diseño y Cumplimiento legal en Caracas, República Bolivariana de Venezuela.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation and Search JavaScript -->
+    <script>
+        // Filter policy sections by keyword
+        function filterPolicies() {
+            const query = document.getElementById("policySearch").value.toLowerCase().trim();
+            const sections = document.querySelectorAll(".policy-section");
+            const clearBtn = document.getElementById("clearSearch");
+            const noResults = document.getElementById("noResults");
+            const sidebar = document.querySelector(".sidebar-toc");
+
+            if (query.length > 0) {
+                clearBtn.style.display = "block";
+            } else {
+                clearBtn.style.display = "none";
+            }
+
+            let foundAny = false;
+
+            sections.forEach(section => {
+                const text = section.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    section.style.display = "block";
+                    foundAny = true;
+                } else {
+                    section.style.display = "none";
+                }
+            });
+
+            if (foundAny) {
+                noResults.style.display = "none";
+                if (query.length > 0) {
+                    sidebar.style.opacity = "0.5";
+                    sidebar.style.pointerEvents = "none";
+                } else {
+                    sidebar.style.opacity = "1";
+                    sidebar.style.pointerEvents = "all";
+                }
+            } else {
+                noResults.style.display = "flex";
+                sidebar.style.opacity = "0.5";
+                sidebar.style.pointerEvents = "none";
+            }
+        }
+
+        // Set search search term directly from quick tags
+        // Set search search term directly from quick tags
+        function setSearch(keyword) {
+            document.getElementById("policySearch").value = keyword;
+            filterPolicies();
+            // Scroll to the content grid or container top smoothly
+            document.querySelector(".layout-container").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Clear the search query
+        function clearSearchFilter() {
+            document.getElementById("policySearch").value = "";
+            filterPolicies();
+            // Scroll back up to interactive controls
+            document.querySelector(".interactive-controls").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Highlight Active Link on Scroll
+        window.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver(entries => {
+                // If search query is active, disable scroll highlight to avoid conflicts
+                const query = document.getElementById("policySearch").value.trim();
+                if (query.length > 0) return;
+
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.intersectionRatio > 0.15) {
+                        document.querySelectorAll('.toc-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: [0.15, 0.45], rootMargin: "0px 0px -40% 0px" });
+
+            // Track all sections
+            document.querySelectorAll('.policy-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

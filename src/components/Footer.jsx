@@ -26,6 +26,7 @@ const Footer = () => {
                         <div className="link-group">
                             <h4>Legal</h4>
                             <a href="/legal/index.html" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a>
+                            <a href="/privacidad/index.html" target="_blank" rel="noopener noreferrer">Políticas de Privacidad</a>
                         </div>
                     </div>
                 </div>
